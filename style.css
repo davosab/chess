@@ -1,0 +1,5 @@
+*, *::before, *::after {
+  line-height: 1;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
