@@ -3,3 +3,9 @@
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
 }
+
+/* Modal */
+dialog::backdrop {
+  background: #00000080;
+  backdrop-filter: blur(3px);
+}
