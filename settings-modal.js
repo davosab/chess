@@ -5,13 +5,13 @@
 
   settingsButton.addEventListener("click", () => {
     settingsModal.classList.remove("hidden");
-    settingsModal.classList.add("block");
+    settingsModal.classList.add("flex");
     settingsModal.showModal();
   });
 
   // Close modal (x button)
   closeButton.addEventListener("click", closeModal = () => {
-    settingsModal.classList.remove("block");
+    settingsModal.classList.remove("flex");
     settingsModal.classList.add("hidden");
     setTimeout(() => settingsModal.close(), 200);
   });
@@ -26,5 +26,10 @@
       e.clientY > modalDimensions.bottom
     )
       closeModal();
+  });
+
+  // Close modal when "Escape"
+  window.addEventListener("keydown", e => {
+    if (e.key == "Escape") closeModal();
   });
 })();
