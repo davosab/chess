@@ -73,6 +73,10 @@
     closeModal();
   });
 
+  cancelBtn.addEventListener("click", () => {
+    closeModal();
+  });
+
 
 
 })();

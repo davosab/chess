@@ -16,6 +16,8 @@ function draw() {
 }
 
 function initBoard() {
+  colourForWhite = "white";
+  colourForBlack = "gray";
   board = [
     ["♜", "♞", "♝", "♛", "♚", "♝", "♞", "♜"],
     ["♟", "♟", "♟", "♟", "♟", "♟", "♟", "♟"],
@@ -32,9 +34,9 @@ function initSquares() {
   for (let i = 0; i < 8; i++) {
     for (let j = 0; j < 8; j++) {
       if ((i + j) % 2 == 0) {
-        fill("white");
+        fill(colourForWhite);
       } else {
-        fill("gray");
+        fill(colourForBlack);
       }
       rect(j * s, i * s, s, s);
     }
