@@ -43,13 +43,13 @@
         Player 1
       </div>
       <div class="bg-[#e2e2e2] flex px-[14px] pt-[5px] pb-[4px] rounded-[8px]">
-        <input type="text" class="focus:outline-0">
+        <input type="text" class="focus:outline-0" maxlength="9" data-p1-name-input>
       </div>
       <div class="whitespace-nowrap">
         Player 2
       </div>
       <div class="bg-[#e2e2e2] flex px-[14px] pt-[5px] pb-[4px] rounded-[8px]">
-        <input type="text" class="focus:outline-0">
+        <input type="text" class="focus:outline-0" maxlength="9" data-p2-name-input>
       </div>
       <div>
         Time
@@ -88,10 +88,10 @@
       </div>
 
       <div class="buttons-container pt-[16px] col-span-2 self-center grid grid-cols-[1fr_1fr] gap-[16px]">
-        <button class="hover:cursor-pointer bg-[#BC4F4F] px-[24px] py-[11px] rounded-[8px]">
+        <button class="hover:cursor-pointer bg-[#BC4F4F] px-[24px] py-[11px] rounded-[8px]" data-cancel-btn>
           Cancel
         </button>
-        <button class="hover:cursor-pointer bg-[#71BC4F] px-[24px] py-[11px] rounded-[8px]">
+        <button class="hover:cursor-pointer bg-[#71BC4F] px-[24px] py-[11px] rounded-[8px]" data-start-new-game-btn>
           Start new game
         </button>
       </div>
@@ -150,7 +150,7 @@
       </div>
 
       <div class="player1 w-[300px] flex flex-col items-center gap-[8px] px-[40px] pt-[18px] pb-[13px]">
-        <div class="text-[30px]">Player1</div>
+        <div class="text-[30px]" data-p1-name>Player1</div>
         <hr class="w-[100%] border-t-[2px]">
         <div class="time text-[24px] text-[#eeeeee] bg-[#4d4d4d] h-[36px] w-[100px] grid place-content-center">
           10:00
@@ -162,7 +162,7 @@
       </div>
 
       <div class="player2 w-[300px] flex flex-col items-center gap-[8px] px-[40px] pt-[18px] pb-[13px]">
-        <div class="text-[30px]">Player2</div>
+        <div class="text-[30px]" data-p2-name>Player2</div>
         <hr class="w-[100%] border-t-[2px]">
         <div class="time text-[24px] text-[#eeeeee] bg-[#4d4d4d] h-[36px] w-[100px] grid place-content-center">
           10:00

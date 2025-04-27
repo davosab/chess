@@ -36,4 +36,43 @@
   window.addEventListener("keydown", e => {
     if (e.key == "Escape") closeModal();
   });
+
+
+  /*** Inputs ****************************************************************/
+  
+  const p1Name = document.querySelector("[data-p1-name]");
+  const p2Name = document.querySelector("[data-p2-name]");
+
+  const p1NameInput = document.querySelector("[data-p1-name-input]");
+  const p2NameInput = document.querySelector("[data-p2-name-input]");
+
+  const cancelBtn = document.querySelector("[data-cancel-btn]");
+  const startNewGameBtn = document.querySelector("[data-start-new-game-btn]");
+
+  startNewGameBtn.addEventListener("click", () => {
+    if (p1NameInput.value.trim() == "" || 
+      p2NameInput.value.trim() == "") {
+      
+      alert("Player names must not be empty!");
+      return;
+    }
+    p1Name.innerHTML = p1NameInput.value;
+    p2Name.innerHTML = p2NameInput.value;
+
+    board = [
+      ["♜", "♞", "♝", "♛", "♚", "♝", "♞", "♜"],
+      ["♟", "♟", "♟", "♟", "♟", "♟", "♟", "♟"],
+      ["", "", "", "", "", "", "", ""],
+      ["", "", "", "", "", "", "", ""],
+      ["", "", "", "", "", "", "", ""],
+      ["", "", "", "", "", "", "", ""],
+      ["♙", "♙", "♙", "♙", "♙", "♙", "♙", "♙"],
+      ["♖", "♘", "♗", "♕", "♔", "♗", "♘", "♖"],
+    ];
+
+    closeModal();
+  });
+
+
+
 })();
