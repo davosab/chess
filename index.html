@@ -9,7 +9,7 @@
   <script src="https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js"></script>
   <script src="chessboard.js" defer></script>
   <script src="settings-modal.js" defer></script>
-  <script src ="pause-modal.js" defer></script>
+  <script src="pause-modal.js" defer></script>
   <title>Chess</title>
 </head>
 
@@ -17,86 +17,116 @@
 
   <!-- Settings modal -->
   <dialog class="hidden rounded-[16px] flex flex-col py-[36px] px-[24px] relative left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2" data-settings-modal>
-    
-    <svg class="absolute hover:cursor-pointer right-[24px] top-[24px]" data-close-button width="18" height="18" viewBox="6 6 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>Close</title> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Close"> <rect id="Rectangle" fill-rule="nonzero" x="0" y="0" width="24" height="24"> </rect> <line x1="16.9999" y1="7" x2="7.00001" y2="16.9999" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"> </line> <line x1="7.00006" y1="7" x2="17" y2="16.9999" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"> </line> </g> </g> </g></svg>
-      
+
+    <svg class="absolute hover:cursor-pointer right-[24px] top-[24px]" data-close-button width="18" height="18" viewBox="6 6 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000">
+      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+      <g id="SVGRepo_iconCarrier">
+        <title>Close</title>
+        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          <g id="Close">
+            <rect id="Rectangle" fill-rule="nonzero" x="0" y="0" width="24" height="24"> </rect>
+            <line x1="16.9999" y1="7" x2="7.00001" y2="16.9999" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"> </line>
+            <line x1="7.00006" y1="7" x2="17" y2="16.9999" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"> </line>
+          </g>
+        </g>
+      </g>
+    </svg>
+
     <div class="text-center text-[20px] font-bold pb-[12px]">
       Game Settings
     </div>
     <hr>
-    <div class="inputs-container pt-[24px] px-[12px] pb-[36px] grid grid-cols-[auto_1fr] gap-[20px]">
+    <div class="inputs-container items-center pt-[24px] px-[12px] grid grid-cols-[auto_1fr] gap-[20px]">
 
-      <div>
+      <div class="whitespace-nowrap">
         Player 1
       </div>
-      <div class>
-        <input type="text">
+      <div class="bg-[#e2e2e2] flex px-[14px] pt-[5px] pb-[4px] rounded-[8px]">
+        <input type="text" class="focus:outline-0">
       </div>
-      <div>
+      <div class="whitespace-nowrap">
         Player 2
       </div>
-      <div>
-        <input type="text">
+      <div class="bg-[#e2e2e2] flex px-[14px] pt-[5px] pb-[4px] rounded-[8px]">
+        <input type="text" class="focus:outline-0">
       </div>
       <div>
         Time
       </div>
       <div class="container flex gap-[8px]">
-        <div>
+        <div class="hover:cursor-pointer bg-[#c2c2c2] text-[14px] rounded-[8px] grid content-center justify-center w-[84px] h-[36px]">
           3 min
         </div>
-        <div>
+        <div class="hover:cursor-pointer bg-[#c2c2c2] text-[14px] rounded-[8px] grid content-center justify-center w-[84px] h-[36px]">
           5 min
         </div>
-        <div>
+        <div class="hover:cursor-pointer bg-[#c2c2c2] text-[14px] rounded-[8px] grid content-center justify-center w-[84px] h-[36px]">
           10 min
         </div>
       </div>
       <div>
         Colours
       </div>
-      <div class="container">
-        <div>
-          <div></div>
-          <div></div>
-        </div>
-        <div>
-          <div></div>
-          <div></div>
-        </div>
-        <div>
-          <div></div>
-          <div></div>
-        </div>
-      </div>
-    </div>
-    <div class="buttons-container self-center grid grid-cols-[1fr_1fr] gap-[16px]">
-      <button class="bg-[#BC4F4F] px-[24px] py-[11px] rounded-[8px]">
-        Cancel
-      </button>
-      <button class="bg-[#71BC4F] px-[24px] py-[11px] rounded-[8px]">
-        Start new game
-      </button>
-    </div>
-    </dialog>
+      <div class="container flex gap-[8px]">
 
-    <!--Pause modal-->
-    <dialog class="pause-modal hidden rounded-[16px] flex flex-col w-[332px] py-[36px] px-[24px] relative left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 ">
+        <div class="hover:cursor-pointer h-[36px] w-[36px] bg-[#d0d0d0] rounded-[8px] relative overflow-hidden">
+          <div class="absolute h-[18px] w-[18px] top-0 left-0 bg-[#454545]"></div>
+          <div class="absolute h-[18px] w-[18px] bottom-0 right-0 bg-[#454545]"></div>
+        </div>
+
+        <div class="hover:cursor-pointer h-[36px] w-[36px] bg-[#FDF4E3] rounded-[8px] relative overflow-hidden">
+          <div class="absolute h-[18px] w-[18px] top-0 left-0 bg-[#6E8532]"></div>
+          <div class="absolute h-[18px] w-[18px] bottom-0 right-0 bg-[#6E8532]"></div>
+        </div>
+
+        <div class="hover:cursor-pointer h-[36px] w-[36px] bg-[#eeeeee] rounded-[8px] relative overflow-hidden">
+          <div class="absolute h-[18px] w-[18px] top-0 left-0 bg-[#000000]"></div>
+          <div class="absolute h-[18px] w-[18px] bottom-0 right-0 bg-[#000000]"></div>
+        </div>
+
+      </div>
+
+      <div class="buttons-container pt-[16px] col-span-2 self-center grid grid-cols-[1fr_1fr] gap-[16px]">
+        <button class="hover:cursor-pointer bg-[#BC4F4F] px-[24px] py-[11px] rounded-[8px]">
+          Cancel
+        </button>
+        <button class="hover:cursor-pointer bg-[#71BC4F] px-[24px] py-[11px] rounded-[8px]">
+          Start new game
+        </button>
+      </div>
+  </dialog>
+
+  <!--Pause modal-->
+  <dialog class="pause-modal hidden rounded-[16px] flex flex-col w-[332px] py-[36px] px-[24px] relative left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 ">
     <div>
-    <svg class="close-button absolute hover:cursor-pointer right-[24px] top-[24px]" data-close-button width="18" height="18" viewBox="6 6 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>Close</title> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Close"> <rect id="Rectangle" fill-rule="nonzero" x="0" y="0" width="24" height="24"> </rect> <line x1="16.9999" y1="7" x2="7.00001" y2="16.9999" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"> </line> <line x1="7.00006" y1="7" x2="17" y2="16.9999" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"> </line> </g> </g> </g></svg>
+      <svg class="close-button absolute hover:cursor-pointer right-[24px] top-[24px]" data-close-button width="18" height="18" viewBox="6 6 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000">
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconCarrier">
+          <title>Close</title>
+          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="Close">
+              <rect id="Rectangle" fill-rule="nonzero" x="0" y="0" width="24" height="24"> </rect>
+              <line x1="16.9999" y1="7" x2="7.00001" y2="16.9999" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"> </line>
+              <line x1="7.00006" y1="7" x2="17" y2="16.9999" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"> </line>
+            </g>
+          </g>
+        </g>
+      </svg>
       <div>
-          <div class="text-center text-[20px] font-bold pb-[12px]">
-            Game Settings
-          </div>
+        <div class="text-center text-[20px] font-bold pb-[12px]">
+          Game Settings
+        </div>
 
-          <div class="border-t mb-5"></div>
+        <div class="border-t mb-5"></div>
 
-          <div class="flex flex-col justify-center items-center gap-[25px] top-10">
-            <button class=" continue-button hover: cursor-pointer rounded-[8px] px-[24px] py-[11px] w-[175px] bg-[#71BC4F]">Continue Match</button>
-            <button class="hover: cursor-pointer rounded-[8px] px-[24px] py-[11px] w-[175px] bg-[#F3E335]">Offer a Draw</button>
-            <button class="hover: cursor-pointer rounded-[8px] px-[24px] py-[11px] w-[175px] bg-[#BC4F4F]">Resign</button>
+        <div class="flex flex-col justify-center items-center gap-[25px] top-10">
+          <button class=" continue-button hover: cursor-pointer rounded-[8px] px-[24px] py-[11px] w-[175px] bg-[#71BC4F]">Continue Match</button>
+          <button class="hover: cursor-pointer rounded-[8px] px-[24px] py-[11px] w-[175px] bg-[#F3E335]">Offer a Draw</button>
+          <button class="hover: cursor-pointer rounded-[8px] px-[24px] py-[11px] w-[175px] bg-[#BC4F4F]">Resign</button>
+        </div>
       </div>
-    </div>
   </dialog>
 
 

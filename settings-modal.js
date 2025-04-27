@@ -3,6 +3,10 @@
   const settingsModal = document.querySelector("[data-settings-modal]");
   const closeButton = document.querySelector("[data-close-button]"); 
 
+  settingsModal.classList.remove("hidden");
+  settingsModal.showModal();
+
+  // Open modal
   settingsButton.addEventListener("click", () => {
     settingsModal.classList.remove("hidden");
     settingsModal.classList.add("flex");
