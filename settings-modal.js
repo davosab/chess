@@ -49,6 +49,13 @@
   const cancelBtn = document.querySelector("[data-cancel-btn]");
   const startNewGameBtn = document.querySelector("[data-start-new-game-btn]");
 
+  setColours = () => {
+    colourForWhite = 
+      document.querySelector("[name='colours']:checked").getAttribute("data-white");
+    colourForBlack = 
+      document.querySelector("[name='colours']:checked").getAttribute("data-black");
+  }
+
   startNewGameBtn.addEventListener("click", () => {
     if (p1NameInput.value.trim() == "" || 
       p2NameInput.value.trim() == "") {
@@ -70,6 +77,7 @@
       ["♖", "♘", "♗", "♕", "♔", "♗", "♘", "♖"],
     ];
 
+    setColours();
     closeModal();
   });
 

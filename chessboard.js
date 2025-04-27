@@ -16,8 +16,8 @@ function draw() {
 }
 
 function initBoard() {
-  colourForWhite = "white";
-  colourForBlack = "gray";
+  colourForWhite = "#ffffff";
+  colourForBlack = "#808080";
   board = [
     ["♜", "♞", "♝", "♛", "♚", "♝", "♞", "♜"],
     ["♟", "♟", "♟", "♟", "♟", "♟", "♟", "♟"],

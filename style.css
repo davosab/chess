@@ -9,3 +9,12 @@ dialog::backdrop {
   background: #00000080;
   backdrop-filter: blur(3px);
 }
+
+input[name="min"]:checked + div {
+  background: #848484;
+  outline: 2px solid #20214b;
+}
+input[name="colours"]:checked + div {
+  outline: 2px solid #20214b;
+  color: #5b3747;
+}

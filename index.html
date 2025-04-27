@@ -54,13 +54,16 @@
       <div>
         Time
       </div>
-      <div class="container flex gap-[8px]">
+      <div class="container flex gap-[8px] relative">
+        <input class="hover:cursor-pointer opacity-0 absolute w-[84px] h-[36px]" type="radio" name="min" value="3">
         <div class="hover:cursor-pointer bg-[#c2c2c2] text-[14px] rounded-[8px] grid content-center justify-center w-[84px] h-[36px]">
           3 min
         </div>
+        <input class="hover:cursor-pointer opacity-0 left-[92px] absolute w-[84px] h-[36px]" type="radio" name="min" value="5">
         <div class="hover:cursor-pointer bg-[#c2c2c2] text-[14px] rounded-[8px] grid content-center justify-center w-[84px] h-[36px]">
           5 min
         </div>
+        <input class="hover:cursor-pointer opacity-0 left-[184px] absolute w-[84px] h-[36px]" type="radio" name="min" value="10">
         <div class="hover:cursor-pointer bg-[#c2c2c2] text-[14px] rounded-[8px] grid content-center justify-center w-[84px] h-[36px]">
           10 min
         </div>
@@ -68,21 +71,24 @@
       <div>
         Colours
       </div>
-      <div class="container flex gap-[8px]">
+      <div class="container flex gap-[8px] relative">
 
-        <div class="hover:cursor-pointer h-[36px] w-[36px] bg-[#d0d0d0] rounded-[8px] relative overflow-hidden">
-          <div class="absolute h-[18px] w-[18px] top-0 left-0 bg-[#454545]"></div>
-          <div class="absolute h-[18px] w-[18px] bottom-0 right-0 bg-[#454545]"></div>
+        <input class="hover:cursor-pointer absolute w-[36px] h-[36px] z-10 opacity-0" type="radio" name="colours" data-white="#ffffff" data-black="#808080">
+        <div class="outline-1 outline-[#20214b] hover:cursor-pointer h-[36px] w-[36px] bg-[#ffffff] rounded-[8px] relative overflow-hidden">
+          <div class="absolute h-[18px] w-[18px] top-0 left-0 bg-[#808080]"></div>
+          <div class="absolute h-[18px] w-[18px] bottom-0 right-0 bg-[#808080]"></div>
         </div>
 
-        <div class="hover:cursor-pointer h-[36px] w-[36px] bg-[#FDF4E3] rounded-[8px] relative overflow-hidden">
+        <input class="hover:cursor-pointer absolute left-[44px] w-[36px] h-[36px] z-10 opacity-0" type="radio" name="colours" data-white="#FDF4E3" data-black="#6E8532">
+        <div class="outline-1 outline-[#20214b] hover:cursor-pointer h-[36px] w-[36px] bg-[#FDF4E3] rounded-[8px] relative overflow-hidden">
           <div class="absolute h-[18px] w-[18px] top-0 left-0 bg-[#6E8532]"></div>
           <div class="absolute h-[18px] w-[18px] bottom-0 right-0 bg-[#6E8532]"></div>
         </div>
 
-        <div class="hover:cursor-pointer h-[36px] w-[36px] bg-[#eeeeee] rounded-[8px] relative overflow-hidden">
-          <div class="absolute h-[18px] w-[18px] top-0 left-0 bg-[#000000]"></div>
-          <div class="absolute h-[18px] w-[18px] bottom-0 right-0 bg-[#000000]"></div>
+        <input class="hover:cursor-pointer absolute left-[88px] w-[36px] h-[36px] z-10 opacity-0" type="radio" name="colours" data-white="#D6E6E5" data-black="#5b3747">
+        <div class="outline-1 outline-[#20214b] hover:cursor-pointer h-[36px] w-[36px] bg-[#D6E6E5] rounded-[8px] relative overflow-hidden">
+          <div class="absolute h-[18px] w-[18px] top-0 left-0 bg-[#5b3747]"></div>
+          <div class="absolute h-[18px] w-[18px] bottom-0 right-0 bg-[#5b3747]"></div>
         </div>
 
       </div>
