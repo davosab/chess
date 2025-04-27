@@ -16,5 +16,4 @@ input[name="min"]:checked + div {
 }
 input[name="colours"]:checked + div {
   outline: 2px solid #20214b;
-  color: #5b3747;
 }
