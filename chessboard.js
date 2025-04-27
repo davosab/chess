@@ -1,6 +1,6 @@
 let s = 75;
-const selectedPiece = {row: null, col: null, p: null};
-const previousPiece = {row: null, col: null};
+const selectedPiece = { row: null, col: null, p: null };
+const previousPiece = { row: null, col: null };
 
 function setup() {
   createCanvas(600, 600);
@@ -16,20 +16,19 @@ function draw() {
 }
 
 function initBoard() {
-    board = [
-      ["♜", "♞", "♝", "♛", "♚", "♝", "♞", "♜"],
-      ["♟", "♟", "♟", "♟", "♟", "♟", "♟", "♟"],
-      ["", "", "", "", "", "", "", ""],
-      ["", "", "", "", "", "", "", ""],
-      ["", "", "", "", "", "", "", ""],
-      ["", "", "", "", "", "", "", ""],
-      ["♙", "♙", "♙", "♙", "♙", "♙", "♙", "♙"],
-      ["♖", "♘", "♗", "♕", "♔", "♗", "♘", "♖"],
-    ];
-  }
+  board = [
+    ["♜", "♞", "♝", "♛", "♚", "♝", "♞", "♜"],
+    ["♟", "♟", "♟", "♟", "♟", "♟", "♟", "♟"],
+    ["", "", "", "", "", "", "", ""],
+    ["", "", "", "", "", "", "", ""],
+    ["", "", "", "", "", "", "", ""],
+    ["", "", "", "", "", "", "", ""],
+    ["♙", "♙", "♙", "♙", "♙", "♙", "♙", "♙"],
+    ["♖", "♘", "♗", "♕", "♔", "♗", "♘", "♖"],
+  ];
+}
 
 function initSquares() {
-
   for (let i = 0; i < 8; i++) {
     for (let j = 0; j < 8; j++) {
       if ((i + j) % 2 == 0) {
@@ -43,7 +42,6 @@ function initSquares() {
 }
 
 function drawSquares() {
-
   for (let i = 0; i < 8; i++) {
     for (let j = 0; j < 8; j++) {
       let piece = board[i][j];
@@ -56,8 +54,8 @@ function drawSquares() {
 }
 
 function mousePressed() {
-  let row = Math.floor(mouseY/s);
-  let col = Math.floor(mouseX/s);
+  let row = Math.floor(mouseY / s);
+  let col = Math.floor(mouseX / s);
 
   if (row < 0 || row > 7 || col < 0 || col > 7) return;
 
@@ -70,7 +68,11 @@ function mousePressed() {
   } else {
     if (board[row][col] == "") {
       board[row][col] = selectedPiece.p;
-      if (previousPiece.row != null || previousPiece.row != row || previousPiece.col != col) {
+      if (
+        previousPiece.row != null ||
+        previousPiece.row != row ||
+        previousPiece.col != col
+      ) {
         board[previousPiece.row][previousPiece.col] = "";
       }
     } else {
