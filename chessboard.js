@@ -1,5 +1,6 @@
-const chessTableCols = 8;
-const chessTableRows = 8;
+let s = 75;
+const selectedPiece = {row: null, col: null, p: null};
+const previousPiece = {row: null, col: null};
 
 function setup() {
   createCanvas(600, 600);
@@ -10,8 +11,8 @@ function setup() {
 
 function draw() {
   background("gray");
-  initSquares(chessTableCols, chessTableRows);
-  drawSquares(chessTableCols, chessTableRows);
+  initSquares();
+  drawSquares();
 }
 
 function initBoard() {
@@ -27,35 +28,55 @@ function initBoard() {
     ];
   }
 
-function initSquares(cols, rows) {
-  let s = 75;
-  let x = 0;
-  let y = 0;
+function initSquares() {
 
-  for (let i = 0; i < rows; i++) {
-    for (let j = 0; j < cols; j++) {
+  for (let i = 0; i < 8; i++) {
+    for (let j = 0; j < 8; j++) {
       if ((i + j) % 2 == 0) {
         fill("white");
       } else {
         fill("gray");
       }
-      rect(x + j * s, y + i * s, s, s);
+      rect(j * s, i * s, s, s);
     }
   }
 }
 
-function drawSquares(rows, cols) {
-  let s = 75;
-  let x = 0;
-  let y = 0;
+function drawSquares() {
 
-  for (let i = 0; i < rows; i++) {
-    for (let j = 0; j < cols; j++) {
+  for (let i = 0; i < 8; i++) {
+    for (let j = 0; j < 8; j++) {
       let piece = board[i][j];
       if (piece != "") {
         fill(0);
-        text(piece, x + j * s + s / 2, y + i * s + s / 2);
+        text(piece, j * s + s / 2, i * s + s / 2);
       }
     }
   }
+}
+
+function mousePressed() {
+  let row = Math.floor(mouseY/s);
+  let col = Math.floor(mouseX/s);
+
+  if (selectedPiece.p == null || selectedPiece.p == "") {
+    selectedPiece.p = board[row][col];
+    selectedPiece.row = row;
+    selectedPiece.col = col;
+    previousPiece.row = row;
+    previousPiece.col = col;
+  } else {
+    if (board[row][col] == "") {
+      board[row][col] = selectedPiece.p;
+      if (previousPiece.row != null || previousPiece.row != row || previousPiece.col != col) {
+        board[previousPiece.row][previousPiece.col] = "";
+      }
+    } else {
+      selectedPiece.p = board[row][col];
+      selectedPiece.row = row;
+      selectedPiece.col = col;
+    }
+  }
+  previousPiece.row = row;
+  previousPiece.col = col;
 }
