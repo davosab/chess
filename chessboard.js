@@ -1,9 +1,13 @@
-let s = 75;
 const selectedPiece = { row: null, col: null, p: null };
 const previousPiece = { row: null, col: null };
 
+let canvasWidth = 500;
+let canvasHeight = 500;
+let s = canvasWidth / 8;
+
+
 function setup() {
-  createCanvas(600, 600);
+  createCanvas(canvasWidth, canvasHeight);
   initBoard();
   textAlign(CENTER, CENTER);
   textSize(55);
