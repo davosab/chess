@@ -10,7 +10,7 @@ function setup() {
   createCanvas(canvasWidth, canvasHeight);
   initBoard();
   textAlign(CENTER, CENTER);
-  textSize(55);
+  textSize(s - 20);
 }
 
 function draw() {
