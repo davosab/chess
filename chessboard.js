@@ -2,7 +2,7 @@ const selectedPiece = { row: null, col: null, p: null };
 const previousPiece = { row: null, col: null };
 
 let canvasWidth = 500;
-let canvasHeight = 500;
+let canvasHeight = canvasWidth;
 let s = canvasWidth / 8;
 
 
