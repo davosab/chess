@@ -4,6 +4,9 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+canvas {
+  box-shadow: 0 10px 20px #000000a2;
+}
 /* Modal */
 dialog::backdrop {
   background: #00000080;
