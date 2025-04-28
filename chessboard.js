@@ -69,8 +69,6 @@ function mousePressed() {
     selectedPiece.p = board[row][col];
     selectedPiece.row = row;
     selectedPiece.col = col;
-    previousPiece.row = row;
-    previousPiece.col = col;
   } else {
     if (board[row][col] == "") {
       board[row][col] = selectedPiece.p;
