@@ -25,7 +25,7 @@ document.addEventListener("keydown", function (e) {
     closePauseModal();
 });
 
-// Closing modal when the outside of the modal is clicked
+// Closing modal when outside of the modal is clicked
 document.addEventListener("click", function (e) {
   if (e.target === pauseModal) closePauseModal();
 });
