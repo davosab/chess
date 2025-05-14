@@ -29,7 +29,6 @@ getPossibleMoves(row, col, board) {
     if (board[r][c] === null) bishopPossibleMoves.push({ row: r, col: c });
     else break;
   }
-
   // Diagonală jos-stânga
   for (let r = row + 1, c = col - 1; r < 8 && c >= 0; r++, c--) {
     if (board[r][c] === null) bishopPossibleMoves.push({ row: r, col: c });

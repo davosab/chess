@@ -40,5 +40,3 @@ class Rook extends Piece {
 
 
   }
-
-   Rook.colourSquares(rookPossibleMoves);
