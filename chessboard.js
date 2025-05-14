@@ -23,14 +23,14 @@ function initBoard() {
   colourForWhite = "#ffffff";
   colourForBlack = "#808080";
   board = [
-    ["♜", "♞", "♝", "♛", "♚", "♝", "♞", "♜"],
-    ["♟", "♟", "♟", "♟", "♟", "♟", "♟", "♟"],
-    ["", "", "", "", "", "", "", ""],
-    ["", "", "", "", "", "", "", ""],
-    ["", "", "", "", "", "", "", ""],
-    ["", "", "", "", "", "", "", ""],
-    ["♙", "♙", "♙", "♙", "♙", "♙", "♙", "♙"],
-    ["♖", "♘", "♗", "♕", "♔", "♗", "♘", "♖"],
+    [new Rook("black"), null, null, null, null, null, null, new Rook("black")],
+    [null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null],
+    [new Rook("white"), null, null, null, null, null, null, new Rook("white")],
   ];
 }
 
@@ -51,9 +51,9 @@ function drawPieces() {
   for (let i = 0; i < 8; i++) {
     for (let j = 0; j < 8; j++) {
       let piece = board[i][j];
-      if (piece != "") {
+      if (piece != null) {
         fill(0);
-        text(piece, j * s + s / 2, i * s + s / 2);
+        text(piece.getIcon(), j * s + s / 2, i * s + s / 2);
       }
     }
   }
