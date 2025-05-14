@@ -1,8 +1,16 @@
 class Piece {
-  constructor(row, col) {
+  #colour;
+
+  constructor(colour, row, col) {
+    this.#colour = colour;
     this.row = row;
     this.col = col;
   }
+
+  get colour() {
+    return this.#colour;
+  }
+
   colourSquares(arrayPossibleSquares) {
     for (let possibleMoves of arrayPossibleSquares) {
       let row = possibleMoves.row;

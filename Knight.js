@@ -1,4 +1,6 @@
 class Knight extends Piece {
+  #icon;
+
   moves = [ // changes to the index of the initial position
     [-1, -2], 
     [-2, -1], 
@@ -9,17 +11,17 @@ class Knight extends Piece {
     [2, -1], 
     [1, -2]
   ];
+
   constructor(colour, row, col) {
-    super(row, col);
-    this.colour = colour;
-    this.icon = (colour == "white") ? "♘" : "♞" ;
+    super(colour, row, col);
+    this.#icon = (colour == "white") ? "♘" : "♞" ;
   }
 
-  getIcon() {
-    return this.icon;
+  get icon() {
+    return this.#icon;
   }
 
-  getPossibleMoves() {
+  showPossibleMoves() {
     let possibleMoves = [];
     for (const move of moves) {
       let possibleMove = [this.row + move[0], this.col + move[1]];
@@ -34,6 +36,6 @@ class Knight extends Piece {
 
       possibleMoves.push([this.row + move[0], this.col + move[1]]);
     }
-    return possibleMoves;
+    this.colourSquares(possibleMoves);
   }
 }
