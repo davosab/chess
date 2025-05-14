@@ -23,14 +23,14 @@ function initBoard() {
   colourForWhite = "#ffffff";
   colourForBlack = "#808080";
   board = [
-    [new Rook("black"), null, null, null, null, null, null, new Rook("black")],
+    [new Rook("black"), null, new Bishop("black"), null, null, new Bishop("black"), null, new Rook("black")],
     [null, null, null, null, null, null, null, null],
     [null, null, null, null, null, null, null, null],
     [null, null, null, null, null, null, null, null],
     [null, null, null, null, null, null, null, null],
     [null, null, null, null, null, null, null, null],
     [null, null, null, null, null, null, null, null],
-    [new Rook("white"), null, null, null, null, null, null, new Rook("white")],
+    [new Rook("white"), null, new Bishop("white"), null, null, new Bishop("white"),  null, new Rook("white")],
   ];
 }
 
