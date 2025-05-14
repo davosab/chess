@@ -16,14 +16,7 @@ function draw() {
   background("gray");
   drawSquares();
   drawPieces();
-  if (selectedPiece.p != null) {
-    const possibleMoves = selectedPiece.p.getPossibleMoves(
-      selectedPiece.row,
-      selectedPiece.col,
-      board
-    );
-    selectedPiece.p.colourSquares(possibleMoves);
-  }
+  drawPossibleMoves();
 }
 
 function initBoard() {
@@ -81,6 +74,17 @@ function drawPieces() {
         text(piece.getIcon(), j * s + s / 2, i * s + s / 2);
       }
     }
+  }
+}
+
+function drawPossibleMoves() {
+  if (selectedPiece.p != null) {
+    const possibleMoves = selectedPiece.p.getPossibleMoves(
+      selectedPiece.row,
+      selectedPiece.col,
+      board
+    );
+    selectedPiece.p.colourSquares(possibleMoves);
   }
 }
 
