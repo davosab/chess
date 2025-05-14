@@ -34,7 +34,7 @@ function initBoard() {
       new Rook("black"),
       null,
       new Bishop("black"),
-      new Queen(),
+      new Queen("black"),
       null,
       new Bishop("black"),
       null,
