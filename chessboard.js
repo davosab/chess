@@ -5,7 +5,6 @@ let canvasWidth = 500;
 let canvasHeight = canvasWidth;
 let s = canvasWidth / 8;
 
-
 function setup() {
   createCanvas(canvasWidth, canvasHeight);
   initBoard();
@@ -17,20 +16,46 @@ function draw() {
   background("gray");
   drawSquares();
   drawPieces();
+  if (selectedPiece.p != null) {
+    const possibleMoves = selectedPiece.p.getPossibleMoves(
+      selectedPiece.row,
+      selectedPiece.col,
+      board
+    );
+    selectedPiece.p.colourSquares(possibleMoves);
+  }
 }
 
 function initBoard() {
   colourForWhite = "#ffffff";
   colourForBlack = "#808080";
   board = [
-    [new Rook("black"), null, new Bishop("black"), null, null, new Bishop("black"), null, new Rook("black")],
+    [
+      new Rook("black"),
+      null,
+      new Bishop("black"),
+      new Queen(),
+      null,
+      new Bishop("black"),
+      null,
+      new Rook("black"),
+    ],
     [null, null, null, null, null, null, null, null],
     [null, null, null, null, null, null, null, null],
     [null, null, null, null, null, null, null, null],
     [null, null, null, null, null, null, null, null],
     [null, null, null, null, null, null, null, null],
     [null, null, null, null, null, null, null, null],
-    [new Rook("white"), null, new Bishop("white"), null, null, new Bishop("white"),  null, new Rook("white")],
+    [
+      new Rook("white"),
+      null,
+      new Bishop("white"),
+      new Queen("white"),
+      null,
+      new Bishop("white"),
+      null,
+      new Rook("white"),
+    ],
   ];
 }
 
