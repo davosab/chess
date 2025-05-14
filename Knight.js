@@ -14,7 +14,7 @@ class Knight extends Piece {
 
   constructor(colour, row, col) {
     super(colour, row, col);
-    this.#icon = (colour == "white") ? "♘" : "♞" ;
+    this.#icon = (colour == "w") ? "♘" : "♞" ;
   }
 
   get icon() {

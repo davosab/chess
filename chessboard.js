@@ -24,14 +24,14 @@ function initBoard() {
   colourForBlack = "#808080";
   board = [
     [
-      new Rook("black"),
-      new Knight("black"),
-      new Bishop("black"),
-      new Queen("black"),
+      new Rook("b", 0, 0),
+      new Knight("b", 0, 1),
+      new Bishop("b", 0, 2),
+      new Queen("b", 0, 3),
       null,
-      new Bishop("black"),
-      new Knight("black"),
-      new Rook("black"),
+      new Bishop("b", 0, 5),
+      new Knight("b", 0, 6),
+      new Rook("b", 0, 7),
     ],
     [null, null, null, null, null, null, null, null],
     [null, null, null, null, null, null, null, null],
@@ -40,14 +40,14 @@ function initBoard() {
     [null, null, null, null, null, null, null, null],
     [null, null, null, null, null, null, null, null],
     [
-      new Rook("white"),
-      new Knight("white"),
-      new Bishop("white"),
-      new Queen("white"),
+      new Rook("w", 7, 0),
+      new Knight("w", 7 , 1),
+      new Bishop("w", 7, 2),
+      new Queen("w", 7, 3),
       null,
-      new Bishop("white"),
-      new Knight("white"),
-      new Rook("white"),
+      new Bishop("w", 7, 5),
+      new Knight("w", 7, 6),
+      new Rook("w", 7, 7),
     ],
   ];
 }
