@@ -32,12 +32,12 @@ function initBoard() {
   board = [
     [
       new Rook("black"),
-      null,
+      new Knight("black"),
       new Bishop("black"),
       new Queen("black"),
       null,
       new Bishop("black"),
-      null,
+      new Knight("black"),
       new Rook("black"),
     ],
     [null, null, null, null, null, null, null, null],
@@ -48,12 +48,12 @@ function initBoard() {
     [null, null, null, null, null, null, null, null],
     [
       new Rook("white"),
-      null,
+      new Knight("white"),
       new Bishop("white"),
       new Queen("white"),
       null,
       new Bishop("white"),
-      null,
+      new Knight("white"),
       new Rook("white"),
     ],
   ];
