@@ -39,7 +39,6 @@ class Pawn extends Piece {
 
       possibleMoves.push([this.row + move[0], this.col + move[1]]);
     }
-    console.log("possibleMoves in Pawn: " + possibleMoves);
     return possibleMoves;
   }
 }

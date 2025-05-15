@@ -16,7 +16,7 @@ function setup() {
 }
 
 function draw() {
-  background("gray");
+  // background("gray");
   drawSquares();
   drawPieces();
 }
@@ -84,10 +84,22 @@ function drawSquares() {
 
       // Draws selectedPiece's possible moves at all times
       if (selectedPiece != null) {
+        // current square
+        if (selectedPiece.row == i && selectedPiece.col == j) {
+            fill("#ffd477cc");
+            rect(j * s, i * s, s, s);
+        }
         for (const move of selectedPiece.getPossibleMoves()) {
           if (move[0] == i && move[1] == j) {
-            fill("#ffe8b580");
+            fill("#ffe8b599");
             rect(j * s, i * s, s, s);
+
+            // circle settings
+            push();
+              stroke("#00000000");
+              fill("#00000020");
+              circle(j * s + 0.5 * s, i * s + 0.5 * s, s * 0.4);
+            pop();
           }
         }
       }
