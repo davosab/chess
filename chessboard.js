@@ -19,7 +19,6 @@ function draw() {
   background("gray");
   drawSquares();
   drawPieces();
-  drawPossibleMoves();
 }
 
 function initBoard() {
@@ -81,6 +80,14 @@ function drawSquares() {
       } else {
         fill(colourForBlack);
       }
+
+      // Draws selectedPiece's possible moves at all times
+      if (selectedPiece != null) {
+        for (const move of selectedPiece.getPossibleMoves()) {
+          if (move[0] == i && move[1] == j) fill("#FFE8B5");
+        }
+      }
+
       rect(j * s, i * s, s, s);
     }
   }
@@ -96,18 +103,6 @@ function drawPieces() {
       }
     }
   }
-}
-
-function drawPossibleMoves() {
-  if (selectedPiece != null) selectedPiece.showPossibleMoves();
-  // if (selectedPiece.p != null) {
-  //   const possibleMoves = selectedPiece.p.getPossibleMoves(
-  //     selectedPiece.row,
-  //     selectedPiece.col,
-  //     board
-  //   );
-  //   selectedPiece.p.colourSquares(possibleMoves);
-  // }
 }
 
 function mousePressed() {

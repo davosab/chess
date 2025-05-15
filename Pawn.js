@@ -3,22 +3,29 @@ class Pawn extends Piece {
   #hasMoved = false;
 
   moves = [ // changes to the index of the initial position
-    [1, 0], 
-    [2, 0]
+    [1, 0], // for pawns moving down the board
+    [2, 0] // for pawns moving up, row must be -
   ];
 
   constructor(colour, row, col) {
     super(colour, row, col);
-    this.#icon = (colour == "w") ? "♙" : "♟" ;
+    this.#icon = (colour == "w") ? "♙" : "♟";
+
+    if (colour == "w") {
+      this.moves[0][0] *= -1;
+      this.moves[1][0] *= -1;
+    } 
   }
 
   get icon() {
     return this.#icon;
   }
 
-  showPossibleMoves() {
-    if (!this.#hasMoved) moves.pop(); // remove option to move 2 squares
+  getPossibleMoves() {
     let possibleMoves = [];
+
+    if (!this.#hasMoved) this.moves.pop(); // remove option to move 2 squares
+    
     for (const move of this.moves) {
       let possibleMove = [this.row + move[0], this.col + move[1]];
       if (
@@ -32,6 +39,6 @@ class Pawn extends Piece {
 
       possibleMoves.push([this.row + move[0], this.col + move[1]]);
     }
-    this.colourSquares(possibleMoves);
+    return possibleMoves;
   }
 }

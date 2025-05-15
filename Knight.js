@@ -21,7 +21,7 @@ class Knight extends Piece {
     return this.#icon;
   }
 
-  showPossibleMoves() {
+  getPossibleMoves() {
     let possibleMoves = [];
     for (const move of this.moves) {
       let possibleMove = [this.row + move[0], this.col + move[1]];
@@ -36,6 +36,6 @@ class Knight extends Piece {
 
       possibleMoves.push([this.row + move[0], this.col + move[1]]);
     }
-    this.colourSquares(possibleMoves);
+    return possibleMoves;
   }
 }
