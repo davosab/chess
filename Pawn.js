@@ -24,7 +24,7 @@ class Pawn extends Piece {
   getPossibleMoves() {
     let possibleMoves = [];
 
-    if (!this.#hasMoved) this.moves.pop(); // remove option to move 2 squares
+    // if (!this.#hasMoved) this.moves.pop(); // remove option to move 2 squares
     
     for (const move of this.moves) {
       let possibleMove = [this.row + move[0], this.col + move[1]];
@@ -39,6 +39,7 @@ class Pawn extends Piece {
 
       possibleMoves.push([this.row + move[0], this.col + move[1]]);
     }
+    console.log("possibleMoves in Pawn: " + possibleMoves);
     return possibleMoves;
   }
 }

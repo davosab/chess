@@ -61,7 +61,7 @@ function initBoard() {
     ],
     [
       new Rook("w", 7, 0),
-      new Knight("w", 7 , 1),
+      new Knight("w", 7, 1),
       new Bishop("w", 7, 2),
       null,//new Queen("w", 7, 3),
       null,
@@ -80,15 +80,18 @@ function drawSquares() {
       } else {
         fill(colourForBlack);
       }
+      rect(j * s, i * s, s, s);
 
       // Draws selectedPiece's possible moves at all times
       if (selectedPiece != null) {
         for (const move of selectedPiece.getPossibleMoves()) {
-          if (move[0] == i && move[1] == j) fill("#FFE8B5");
+          if (move[0] == i && move[1] == j) {
+            fill("#ffe8b580");
+            rect(j * s, i * s, s, s);
+          }
         }
       }
 
-      rect(j * s, i * s, s, s);
     }
   }
 }
