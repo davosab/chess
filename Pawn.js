@@ -1,20 +1,15 @@
-class Knight extends Piece {
+class Pawn extends Piece {
   #icon;
+  #hasMoved = false;
 
   moves = [ // changes to the index of the initial position
-    [-1, -2], 
-    [-2, -1], 
-    [-2, 1], 
-    [-1, 2], 
-    [1, 2], 
-    [2, 1], 
-    [2, -1], 
-    [1, -2]
+    [1, 0], 
+    [2, 0]
   ];
 
   constructor(colour, row, col) {
     super(colour, row, col);
-    this.#icon = (colour == "w") ? "♘" : "♞" ;
+    this.#icon = (colour == "w") ? "♙" : "♟" ;
   }
 
   get icon() {
@@ -22,6 +17,7 @@ class Knight extends Piece {
   }
 
   showPossibleMoves() {
+    if (!this.#hasMoved) moves.pop(); // remove option to move 2 squares
     let possibleMoves = [];
     for (const move of this.moves) {
       let possibleMove = [this.row + move[0], this.col + move[1]];
