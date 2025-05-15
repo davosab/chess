@@ -34,8 +34,10 @@ class Pawn extends Piece {
       ) continue;
 
       // if piece on square is of same colour, skip
-      if (board[possibleMove[0], possibleMove[1]].colour == this.colour) 
-        continue;
+      if (
+        board[possibleMove[0]][possibleMove[1]] != null &&
+        board[possibleMove[0]][possibleMove[1]].colour == this.colour
+      ) continue;
 
       possibleMoves.push([this.row + move[0], this.col + move[1]]);
     }

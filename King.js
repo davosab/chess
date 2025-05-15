@@ -1,20 +1,20 @@
-class Knight extends Piece {
+class King extends Piece {
   #icon;
 
   moves = [ // changes to the index of the initial position
-    [-1, -2], 
-    [-2, -1], 
-    [-2, 1], 
-    [-1, 2], 
-    [1, 2], 
-    [2, 1], 
-    [2, -1], 
-    [1, -2]
+    [-1, 0], 
+    [-1, 1], 
+    [0, 1], 
+    [1, 1], 
+    [1, 0], 
+    [1, -1], 
+    [0, -1], 
+    [-1, -1]
   ];
 
   constructor(colour, row, col) {
     super(colour, row, col);
-    this.#icon = (colour == "w") ? "♘" : "♞" ;
+    this.#icon = (colour == "w") ? "♔" : "♚" ;
   }
 
   get icon() {
