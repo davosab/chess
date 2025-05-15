@@ -1,8 +1,8 @@
-// const selectedPiece = { row: null, col: null, p: null };
-// const previousPiece = { row: null, col: null };
-
 let selectedPiece;
 let previousPiece;
+
+let colourForWhite = "#ffffff";
+let colourForBlack = "#808080";
 
 let canvasWidth = 500;
 let canvasHeight = canvasWidth;
@@ -16,14 +16,11 @@ function setup() {
 }
 
 function draw() {
-  // background("gray");
   drawSquares();
   drawPieces();
 }
 
 function initBoard() {
-  colourForWhite = "#ffffff";
-  colourForBlack = "#808080";
   board = [
     [
       new Rook("b", 0, 0),
