@@ -1,5 +1,8 @@
-const selectedPiece = { row: null, col: null, p: null };
-const previousPiece = { row: null, col: null };
+// const selectedPiece = { row: null, col: null, p: null };
+// const previousPiece = { row: null, col: null };
+
+let selectedPiece;
+let previousPiece;
 
 let canvasWidth = 500;
 let canvasHeight = canvasWidth;
@@ -78,14 +81,15 @@ function drawPieces() {
 }
 
 function drawPossibleMoves() {
-  if (selectedPiece.p != null) {
-    const possibleMoves = selectedPiece.p.getPossibleMoves(
-      selectedPiece.row,
-      selectedPiece.col,
-      board
-    );
-    selectedPiece.p.colourSquares(possibleMoves);
-  }
+  if (selectedPiece != null) selectedPiece.showPossibleMoves();
+  // if (selectedPiece.p != null) {
+  //   const possibleMoves = selectedPiece.p.getPossibleMoves(
+  //     selectedPiece.row,
+  //     selectedPiece.col,
+  //     board
+  //   );
+  //   selectedPiece.p.colourSquares(possibleMoves);
+  // }
 }
 
 function mousePressed() {
@@ -94,26 +98,28 @@ function mousePressed() {
 
   if (row < 0 || row > 7 || col < 0 || col > 7) return;
 
-  if (selectedPiece.p == null || selectedPiece.p == "") {
-    selectedPiece.p = board[row][col];
-    selectedPiece.row = row;
-    selectedPiece.col = col;
-  } else {
-    if (board[row][col] == "") {
-      board[row][col] = selectedPiece.p;
-      if (
-        previousPiece.row != null ||
-        previousPiece.row != row ||
-        previousPiece.col != col
-      ) {
-        board[previousPiece.row][previousPiece.col] = "";
-      }
-    } else {
-      selectedPiece.p = board[row][col];
-      selectedPiece.row = row;
-      selectedPiece.col = col;
-    }
-  }
-  previousPiece.row = row;
-  previousPiece.col = col;
+  selectedPiece = board[row][col];
+
+  // if (selectedPiece.p == null || selectedPiece.p == "") {
+  //   selectedPiece.p = board[row][col];
+  //   selectedPiece.row = row;
+  //   selectedPiece.col = col;
+  // } else {
+  //   if (board[row][col] == "") {
+  //     board[row][col] = selectedPiece.p;
+  //     if (
+  //       previousPiece.row != null ||
+  //       previousPiece.row != row ||
+  //       previousPiece.col != col
+  //     ) {
+  //       board[previousPiece.row][previousPiece.col] = "";
+  //     }
+  //   } else {
+  //     selectedPiece.p = board[row][col];
+  //     selectedPiece.row = row;
+  //     selectedPiece.col = col;
+  //   }
+  // }
+  // previousPiece.row = row;
+  // previousPiece.col = col;
 }

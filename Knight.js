@@ -23,7 +23,7 @@ class Knight extends Piece {
 
   showPossibleMoves() {
     let possibleMoves = [];
-    for (const move of moves) {
+    for (const move of this.moves) {
       let possibleMove = [this.row + move[0], this.col + move[1]];
       if (
         possibleMove[0] > 7 || possibleMove[0] < 0 || // row is on board
@@ -37,5 +37,6 @@ class Knight extends Piece {
       possibleMoves.push([this.row + move[0], this.col + move[1]]);
     }
     this.colourSquares(possibleMoves);
+    console.log(possibleMoves);
   }
 }

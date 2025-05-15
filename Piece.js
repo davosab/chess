@@ -12,9 +12,9 @@ class Piece {
   }
 
   colourSquares(arrayPossibleSquares) {
-    for (let possibleMoves of arrayPossibleSquares) {
-      let row = possibleMoves.row;
-      let col = possibleMoves.col;
+    for (let possibleMove of arrayPossibleSquares) {
+      let row = possibleMove[0];
+      let col = possibleMove[1];
 
       if (row >= 0 && row <= 7 && col >= 0 && col <= 7) {
         fill("#ffe8b5");
