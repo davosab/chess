@@ -4,7 +4,9 @@ class Pawn extends Piece {
 
   directions = [
     {row: 1, col: 0}, 
-    {row: 2, col: 0}
+    {row: 2, col: 0}, 
+    null, 
+    null
   ];
 
   constructor(colour, row, col) {
@@ -27,6 +29,24 @@ class Pawn extends Piece {
 
   set hasMoved(bool) {
     this.#hasMoved = bool;
+  }
+
+  checkForDiagonalTake() {
+    let rowDirection = this.colour == "w" ? -1 : 1;
+    this.directions.splice(-2, 1, {row: rowDirection, col: -1});
+    this.directions.splice(-1, 1, {row: rowDirection, col: 1});
+    
+    if (
+      !board[this.row + rowDirection][this.col - 1] || 
+      board[this.row + rowDirection][this.col - 1].colour == this.colour
+    ) {
+      this.directions.splice(-2, 1, null);
+    }
+    if (!board[this.row + rowDirection][this.col + 1] || 
+      board[this.row + rowDirection][this.col + 1].colour == this.colour
+    ) {
+      this.directions.splice(-1, 1, null);
+    }
   }
 
 }

@@ -122,7 +122,8 @@ function mousePressed() {
 
   if (row < 0 || row > 7 || col < 0 || col > 7) return;
 
-  if (selectedPiece != null) {
+  if (selectedPiece) {
+    // if empty space or enemy piece, move there, else: new selected piece
     if (board[row][col] == null || selectedPiece.colour != board[row][col].colour) {
       selectedPiece.moveTo(row, col);
     } else {
@@ -134,26 +135,4 @@ function mousePressed() {
   
   console.log(selectedPiece);
 
-  // if (selectedPiece.p == null || selectedPiece.p == "") {
-  //   selectedPiece.p = board[row][col];
-  //   selectedPiece.row = row;
-  //   selectedPiece.col = col;
-  // } else {
-  //   if (board[row][col] == "") {
-  //     board[row][col] = selectedPiece.p;
-  //     if (
-  //       previousPiece.row != null ||
-  //       previousPiece.row != row ||
-  //       previousPiece.col != col
-  //     ) {
-  //       board[previousPiece.row][previousPiece.col] = "";
-  //     }
-  //   } else {
-  //     selectedPiece.p = board[row][col];
-  //     selectedPiece.row = row;
-  //     selectedPiece.col = col;
-  //   }
-  // }
-  // previousPiece.row = row;
-  // previousPiece.col = col;
 }
