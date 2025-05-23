@@ -11,35 +11,44 @@ class Piece {
     return this.#colour;
   }
 
+  moveNotOnBoard(i, j) {
+    return i > 7 || i < 0 || j > 7 || j < 0;
+  }
+
   getPossibleMoves() {
     let possibleMoves = [];
-    for (const move of this.moves) {
-      let possibleMove = [this.row + move[0], this.col + move[1]];
-      if (
-        possibleMove[0] > 7 || possibleMove[0] < 0 || // row is on board
-        possibleMove[1] > 7 || possibleMove[1] < 0 // col is on board   
-      ) continue;
 
-      // if piece on square is of same colour, skip
-      if (
-        board[possibleMove[0]][possibleMove[1]] != null &&
-        board[possibleMove[0]][possibleMove[1]].colour == this.colour
-      ) continue;
+    directionsLoop:
+    for (const d of this.directions) {
+        let currentRow = this.row + d.row;
+        let currentCol = this.col + d.col;
 
-      possibleMoves.push([this.row + move[0], this.col + move[1]]);
+      let keepGoingInDirection = true;
+      while (keepGoingInDirection) {
+
+        let possibleMove = { row: currentRow, col: currentCol };
+
+        if (this.moveNotOnBoard(currentRow, currentCol)) {
+          continue directionsLoop;
+        }
+
+        // if comes across a piece
+        if (board[currentRow][currentCol] != null) {
+          if (board[currentRow][currentCol].colour != this.colour) {
+            possibleMoves.push(possibleMove);
+          }
+          keepGoingInDirection = false;
+        } else {
+          possibleMoves.push(possibleMove);
+        }
+
+        currentRow += d.row;
+        currentCol += d.col;
+      }
+
     }
+
     return possibleMoves;
   }
 
-  // colourSquares(arrayPossibleSquares) {
-  //   for (let possibleMove of arrayPossibleSquares) {
-  //     let row = possibleMove[0];
-  //     let col = possibleMove[1];
-
-  //     if (row >= 0 && row <= 7 && col >= 0 && col <= 7) {
-  //       fill("#ffe8b5");
-  //       rect(col * s, row * s, s, s);
-  //     }
-  //   }
-  // }
 }

@@ -81,13 +81,15 @@ function drawSquares() {
 
       // Draws selectedPiece's possible moves at all times
       if (selectedPiece != null) {
+        console.log("in selectedPiece != null");
         // current square
         if (selectedPiece.row == i && selectedPiece.col == j) {
-            fill("#ffd477cc");
-            rect(j * s, i * s, s, s);
+          console.log("in selectedPiece.row and col == i and j");
+          fill("#ffd477cc");
+          rect(j * s, i * s, s, s);
         }
         for (const move of selectedPiece.getPossibleMoves()) {
-          if (move[0] == i && move[1] == j) {
+          if (move.row == i && move.col == j) {
             fill("#ffe8b599");
             rect(j * s, i * s, s, s);
 
@@ -124,6 +126,8 @@ function mousePressed() {
   if (row < 0 || row > 7 || col < 0 || col > 7) return;
 
   selectedPiece = board[row][col];
+  console.log(selectedPiece.getPossibleMoves());
+
 
   // if (selectedPiece.p == null || selectedPiece.p == "") {
   //   selectedPiece.p = board[row][col];
