@@ -132,7 +132,5 @@ function mousePressed() {
   } else {
     selectedPiece = board[row][col];
   }
-  
-  console.log(selectedPiece);
 
 }
