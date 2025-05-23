@@ -22,8 +22,7 @@ class Piece {
     // add diagonal take if pawn
     if (this instanceof Pawn) this.checkForDiagonalTake();
 
-    directionsLoop:
-    for (const d of this.directions) {
+    directionsLoop: for (const d of this.directions) {
       if (!d) continue;
       // nr += 1;
       // console.log(this.directions);
@@ -36,7 +35,6 @@ class Piece {
 
       let keepGoingInDirection = true;
       while (keepGoingInDirection) {
-
         let possibleMove = { row: currentRow, col: currentCol };
 
         if (this.moveNotOnBoard(currentRow, currentCol)) {
@@ -70,8 +68,8 @@ class Piece {
   }
 
   moveTo(row, col) {
-    let moveIsPossible = this.getPossibleMoves().some(move =>
-      move.row == row && move.col == col
+    let moveIsPossible = this.getPossibleMoves().some(
+      (move) => move.row == row && move.col == col
     );
 
     if (moveIsPossible) {
@@ -85,6 +83,9 @@ class Piece {
 
       // drop piece
       selectedPiece = null;
+      //changes turn
+      currentTurn = currentTurn === "w" ? "b" : "w";
+      changeTurn();
     }
 
     // remove double move if pawn
@@ -92,7 +93,5 @@ class Piece {
       this.hasMoved = true;
       this.directions.splice(1, 1);
     }
-
   }
-
 }

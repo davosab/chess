@@ -1,4 +1,5 @@
 let selectedPiece;
+let currentTurn = "w";
 
 let colourForWhite = "#ffffff";
 let colourForBlack = "#808080";
@@ -39,7 +40,7 @@ function initBoard() {
       new Pawn("b", 1, 4),
       new Pawn("b", 1, 5),
       new Pawn("b", 1, 6),
-      new Pawn("b", 1, 7)
+      new Pawn("b", 1, 7),
     ],
     [null, null, null, null, null, null, null, null],
     [null, null, null, null, null, null, null, null],
@@ -53,7 +54,7 @@ function initBoard() {
       new Pawn("w", 6, 4),
       new Pawn("w", 6, 5),
       new Pawn("w", 6, 6),
-      new Pawn("w", 6, 7)
+      new Pawn("w", 6, 7),
     ],
     [
       new Rook("w", 7, 0),
@@ -99,7 +100,6 @@ function drawSquares() {
           }
         }
       }
-
     }
   }
 }
@@ -119,18 +119,26 @@ function drawPieces() {
 function mousePressed() {
   let row = Math.floor(mouseY / s);
   let col = Math.floor(mouseX / s);
+    const clickedPiece = board[row][col];
+
 
   if (row < 0 || row > 7 || col < 0 || col > 7) return;
 
   if (selectedPiece) {
     // if empty space or enemy piece, move there, else: new selected piece
-    if (board[row][col] == null || selectedPiece.colour != board[row][col].colour) {
+    if (
+      clickedPiece == null ||
+      selectedPiece.colour != clickedPiece.colour
+    ) {
       selectedPiece.moveTo(row, col);
+    } else if (clickedPiece === currentTurn) {
+      selectedPiece = clickedPiece;
     } else {
-      selectedPiece = board[row][col];
+      selectedPiece = clickedPiece;
     }
   } else {
-    selectedPiece = board[row][col];
+    if (clickedPiece != null && clickedPiece.colour === currentTurn) {
+      selectedPiece = clickedPiece;
+    }
   }
-
 }
