@@ -20,8 +20,8 @@ class Piece {
 
     directionsLoop:
     for (const d of this.directions) {
-        let currentRow = this.row + d.row;
-        let currentCol = this.col + d.col;
+      let currentRow = this.row + d.row;
+      let currentCol = this.col + d.col;
 
       let keepGoingInDirection = true;
       while (keepGoingInDirection) {
@@ -41,11 +41,18 @@ class Piece {
         } else {
           possibleMoves.push(possibleMove);
         }
+        // if pawn, knight or king don't go more steps in same direction
+        if (
+          this instanceof Pawn ||
+          this instanceof King ||
+          this instanceof Knight
+        ) {
+          continue directionsLoop;
+        }
 
         currentRow += d.row;
         currentCol += d.col;
       }
-
     }
 
     return possibleMoves;
