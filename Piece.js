@@ -58,4 +58,32 @@ class Piece {
     return possibleMoves;
   }
 
+  moveTo(row, col) {
+    let moveIsPossible = this.getPossibleMoves().some(move =>
+      move.row == row && move.col == col
+    );
+
+
+
+    if (moveIsPossible) {
+      // swap "pieces"
+      board[row][col] = this;
+      board[this.row][this.col] = null;
+
+      // assign new position
+      this.row = row;
+      this.col = col;
+
+      // drop piece
+      selectedPiece = null;
+    }
+
+    // remove double move if pawn
+    if (this instanceof Pawn && !this.hasMoved) {
+      this.hasMoved = true;
+      this.directions.pop();
+    }
+
+  }
+
 }

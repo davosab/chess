@@ -1,5 +1,4 @@
 let selectedPiece;
-let previousPiece;
 
 let colourForWhite = "#ffffff";
 let colourForBlack = "#808080";
@@ -93,9 +92,9 @@ function drawSquares() {
 
             // circle settings
             push();
-              stroke("#00000000");
-              fill("#00000020");
-              circle(j * s + 0.5 * s, i * s + 0.5 * s, s * 0.4);
+            stroke("#00000000");
+            fill("#00000020");
+            circle(j * s + 0.5 * s, i * s + 0.5 * s, s * 0.4);
             pop();
           }
         }
@@ -123,7 +122,17 @@ function mousePressed() {
 
   if (row < 0 || row > 7 || col < 0 || col > 7) return;
 
-  selectedPiece = board[row][col];
+  if (selectedPiece != null) {
+    if (board[row][col] == null || selectedPiece.colour != board[row][col].colour) {
+      selectedPiece.moveTo(row, col);
+    } else {
+      selectedPiece = board[row][col];
+    }
+  } else {
+    selectedPiece = board[row][col];
+  }
+  
+  console.log(selectedPiece);
 
   // if (selectedPiece.p == null || selectedPiece.p == "") {
   //   selectedPiece.p = board[row][col];

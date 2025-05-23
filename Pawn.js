@@ -21,4 +21,12 @@ class Pawn extends Piece {
     return this.#icon;
   }
 
+  get hasMoved() {
+    return this.#hasMoved;
+  }
+
+  set hasMoved(bool) {
+    this.#hasMoved = bool;
+  }
+
 }
