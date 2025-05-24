@@ -86,12 +86,13 @@ class Piece {
       //changes turn
       currentTurn = currentTurn === "w" ? "b" : "w";
       changeTurn();
+      // remove double move if pawn
+      if (this instanceof Pawn && !this.hasMoved) {
+        this.hasMoved = true;
+        this.directions.splice(1, 1);
+      }
     }
 
-    // remove double move if pawn
-    if (this instanceof Pawn && !this.hasMoved) {
-      this.hasMoved = true;
-      this.directions.splice(1, 1);
-    }
+
   }
 }
