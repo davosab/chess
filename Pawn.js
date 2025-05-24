@@ -36,6 +36,7 @@ class Pawn extends Piece {
     this.directions.splice(-2, 1, {row: rowDirection, col: -1});
     this.directions.splice(-1, 1, {row: rowDirection, col: 1});
     
+    // remove diagonal takes if enemy pieces not present
     if (
       !board[this.row + rowDirection][this.col - 1] || 
       board[this.row + rowDirection][this.col - 1].colour == this.colour

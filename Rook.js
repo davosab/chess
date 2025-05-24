@@ -1,17 +1,19 @@
 class Rook extends Piece {
-directions = [
-  {row: 0, col: -1},
-  {row: 0, col: 1},
-  {row: 1, col: 0},
-  {row: -1, col: 0},  
-];
+  #icon;
 
-    constructor(colour, row, col) {
-        super(colour, row, col);
-        this.icon = (colour === "w") ? "♖" : "♜" ;
-    }
+  directions = [
+    { row: 0, col: -1 },
+    { row: 0, col: 1 },
+    { row: 1, col: 0 },
+    { row: -1, col: 0 },
+  ];
 
-    getIcon() {
-       return this.icon;
-    };
+  constructor(colour, row, col) {
+    super(colour, row, col);
+    this.#icon = (colour == "w") ? "♖" : "♜";
   }
+
+  get icon() {
+    return this.#icon;
+  }
+}

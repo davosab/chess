@@ -1,4 +1,6 @@
 class Bishop extends Piece {
+  #icon;
+
   directions = [
     {row: -1, col: 1},
     {row: -1, col: -1},  
@@ -7,10 +9,10 @@ class Bishop extends Piece {
   ]
   constructor(colour, row, col) {
     super(colour, row, col);
-    this.icon = colour === "w" ? "♗" : "♝";
+    this.#icon = (colour == "w") ? "♗" : "♝";
   }
 
-  getIcon() {
-    return this.icon;
+  get icon() {
+    return this.#icon;
   }
 }
