@@ -43,7 +43,9 @@ class Pawn extends Piece {
     ) {
       this.directions.splice(-2, 1, null);
     }
-    if (!board[this.row + rowDirection][this.col + 1] || 
+
+    if (
+      !board[this.row + rowDirection][this.col + 1] || 
       board[this.row + rowDirection][this.col + 1].colour == this.colour
     ) {
       this.directions.splice(-1, 1, null);
