@@ -80,6 +80,9 @@
 
     setColours();
     closeModal();
+
+    timeDisplayWhite.textContent = formatTime(whiteTime);
+    timeDisplayBlack.textContent = formatTime(blackTime);
   });
 
   cancelBtn.addEventListener("click", () => {

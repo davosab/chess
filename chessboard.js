@@ -124,9 +124,10 @@ function drawPieces() {
 function mousePressed() {
   let row = Math.floor(mouseY / s);
   let col = Math.floor(mouseX / s);
-  const clickedPiece = board[row][col];
 
   if (row < 0 || row > 7 || col < 0 || col > 7) return;
+
+  const clickedPiece = board[row][col];
 
   if (selectedPiece) {
     // if empty space or enemy piece, move there, else: new selected piece

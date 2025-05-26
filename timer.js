@@ -9,7 +9,6 @@ let intervalId = null;
 
 // Timers decrease
 function updateTimers() {
-    console.log(currentTurn, whiteTime, blackTime)
   if (currentTurn === "w") {
     if (whiteTime > 0) {
       whiteTime--;
