@@ -17,7 +17,7 @@ class Piece {
 
   getPossibleMoves() {
     let possibleMoves = [];
-    // let nr = 0;
+    // let clonedBoard = board.map(row => row.slice());
 
     // add diagonal take if pawn
     if (this instanceof Pawn) this.checkForDiagonalTake();
@@ -65,7 +65,6 @@ class Piece {
       }
     }
 
-    // console.log(possibleMoves);
     return possibleMoves;
   }
 
@@ -131,11 +130,9 @@ class Piece {
         }
       }
     }
-    const possibleMoves = this.getPossibleMoves();
-    let checks = possibleMoves.some(move =>
+    return this.getPossibleMoves().some(move =>
       move.row == kingRow && move.col == kingCol
     );
-    return checks;
   }
 
 }
