@@ -1,6 +1,7 @@
 let selectedPiece;
 let currentTurn = "w";
 
+
 let colourForWhite = "#ffffff";
 let colourForBlack = "#808080";
 
@@ -13,6 +14,10 @@ function setup() {
   initBoard();
   textAlign(CENTER, CENTER);
   textSize(s - 20);
+
+  currentTurn = "w";
+  changeTurn();
+  startTimer()
 }
 
 function draw() {
@@ -119,17 +124,13 @@ function drawPieces() {
 function mousePressed() {
   let row = Math.floor(mouseY / s);
   let col = Math.floor(mouseX / s);
-    const clickedPiece = board[row][col];
-
+  const clickedPiece = board[row][col];
 
   if (row < 0 || row > 7 || col < 0 || col > 7) return;
 
   if (selectedPiece) {
     // if empty space or enemy piece, move there, else: new selected piece
-    if (
-      clickedPiece == null ||
-      selectedPiece.colour != clickedPiece.colour
-    ) {
+    if (clickedPiece == null || selectedPiece.colour != clickedPiece.colour) {
       selectedPiece.moveTo(row, col);
     } else if (clickedPiece == currentTurn) {
       selectedPiece = clickedPiece;
