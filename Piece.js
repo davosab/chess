@@ -24,6 +24,11 @@ class Piece {
 
     directionsLoop: for (let i = 0; i < this.directions.length; i++) {
       const d = this.directions[i];
+      if (!d) {
+        console.log(i + " direction: " + d);
+      } else {
+        console.log(i + " direction: " + d.row + ", " + d.col);
+      }
       if (!d) continue;
 
       let currentRow = this.row + d.row;
@@ -41,8 +46,8 @@ class Piece {
         if (board[currentRow][currentCol] != null) {
           if (board[currentRow][currentCol].colour != this.colour) {
             // dont let pawn frontal take or double move over a piece
-            if (this instanceof Pawn && !this.hasMoved) {
-              i += 2;
+            if (this instanceof Pawn && d.col == 0) {
+              if (!this.hasMoved) i += 2;
               continue directionsLoop;
             }
             possibleMoves.push(possibleMove);
@@ -65,6 +70,7 @@ class Piece {
       }
     }
 
+    // console.log(possibleMoves);
     return possibleMoves;
   }
 

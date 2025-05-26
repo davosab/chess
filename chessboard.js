@@ -131,13 +131,13 @@ function mousePressed() {
       selectedPiece.colour != clickedPiece.colour
     ) {
       selectedPiece.moveTo(row, col);
-    } else if (clickedPiece === currentTurn) {
+    } else if (clickedPiece == currentTurn) {
       selectedPiece = clickedPiece;
     } else {
       selectedPiece = clickedPiece;
     }
   } else {
-    if (clickedPiece != null && clickedPiece.colour === currentTurn) {
+    if (clickedPiece != null && clickedPiece.colour == currentTurn) {
       selectedPiece = clickedPiece;
     }
   }
