@@ -8,6 +8,7 @@
     settingsModal.classList.remove("hidden");
     settingsModal.classList.add("flex");
     settingsModal.showModal();
+    clearInterval(intervalId);
   });
 
   // Close modal (x button)
@@ -15,6 +16,7 @@
     settingsModal.classList.remove("flex");
     settingsModal.classList.add("hidden");
     setTimeout(() => settingsModal.close(), 200);
+    startTimer();
   });
 
   // Close modal when clicks outside modal
@@ -25,13 +27,18 @@
       e.clientX > modalDimensions.right ||
       e.clientY < modalDimensions.top ||
       e.clientY > modalDimensions.bottom
-    )
+    ){
       closeModal();
+      startTimer();
+    }
   });
 
   // Close modal when "Escape"
   window.addEventListener("keydown", e => {
-    if (e.key == "Escape") closeModal();
+    if (e.key == "Escape") {
+    startTimer();
+    closeModal();
+    }
   });
 
 
@@ -63,6 +70,10 @@
     p1Name.innerHTML = p1NameInput.value;
     p2Name.innerHTML = p2NameInput.value;
 
+   const timeInput = document.querySelector('input[name="min"]:checked') 
+    blackTime = timeInput.value * 60;
+    whiteTime = timeInput.value * 60;
+
     initBoard();
 
     setColours();
@@ -71,6 +82,7 @@
 
   cancelBtn.addEventListener("click", () => {
     closeModal();
+    startTimer();
   });
 
 

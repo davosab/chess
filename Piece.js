@@ -87,6 +87,7 @@ class Piece {
       //changes turn
       currentTurn = currentTurn == "w" ? "b" : "w";
       changeTurn();
+      startTimer();
       // remove double move if pawn
       if (this instanceof Pawn && !this.hasMoved) {
         this.hasMoved = true;

@@ -19,6 +19,8 @@
   <script src="Pawn.js" defer></script>
   <script src="King.js" defer></script>
   <script src="header.js" defer></script>
+  <script src="timer.js" defer></script>
+
 
   <title>Chess</title>
 </head>
@@ -65,18 +67,24 @@
         Time
       </div>
       <div class="container flex gap-[8px] relative">
+      <label>
         <input class="hover:cursor-pointer opacity-0 absolute w-[84px] h-[36px]" type="radio" name="min" value="3">
         <div class="hover:cursor-pointer bg-[#b2b2b2] text-[14px] rounded-[8px] grid content-center justify-center w-[84px] h-[36px]">
           3 min
         </div>
+      </label>
+      <label>
         <input class="hover:cursor-pointer opacity-0 left-[92px] absolute w-[84px] h-[36px]" type="radio" name="min" value="5">
         <div class="hover:cursor-pointer bg-[#b2b2b2] text-[14px] rounded-[8px] grid content-center justify-center w-[84px] h-[36px]">
           5 min
         </div>
-        <input class="hover:cursor-pointer opacity-0 left-[184px] absolute w-[84px] h-[36px]" type="radio" name="min" value="10">
+      </label>
+      <label>
+        <input class="hover:cursor-pointer opacity-0 left-[184px] absolute w-[84px] h-[36px]" type="radio" name="min" value="10" checked>
         <div class="hover:cursor-pointer bg-[#b2b2b2] text-[14px] rounded-[8px] grid content-center justify-center w-[84px] h-[36px]">
           10 min
         </div>
+      </label>
       </div>
       <div>
         Colours
@@ -168,7 +176,7 @@
       <div class="player1 w-[240px] flex flex-col items-center gap-[6px] px-[32px] pt-[14px] pb-[10px]">
         <div class="text-[24px]" data-p1-name>Player1</div>
         <hr class="w-[100%] border-t-[2px]">
-        <div class="time text-[20px] text-[#eeeeee] bg-[#4d4d4d] h-[29px] w-[80px] grid place-content-center">
+        <div class="white-time text-[20px] text-[#eeeeee] bg-[#4d4d4d] h-[29px] w-[80px] grid place-content-center">
           10:00
         </div>
       </div>
@@ -180,7 +188,7 @@
       <div class="player2 w-[240px] flex flex-col items-center gap-[6px] px-[32px] pt-[14px] pb-[10px]">
         <div class="text-[24px]" data-p2-name>Player2</div>
         <hr class="w-[100%] border-t-[2px]">
-        <div class="time text-[20px] text-[#eeeeee] bg-[#4d4d4d] h-[29px] w-[80px] grid place-content-center">
+        <div class="black-time text-[20px] text-[#eeeeee] bg-[#4d4d4d] h-[29px] w-[80px] grid place-content-center">
           10:00
         </div>
       </div>
