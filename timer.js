@@ -3,8 +3,8 @@ const startingMinutes = parseInt(document.querySelector('input[name="min"]:check
 let whiteTime = startingMinutes * 60;
 let blackTime = startingMinutes * 60;
 
-const countdownWhite = document.querySelector(".white-time");
-const countdownBlack = document.querySelector(".black-time");
+const timeDisplayWhite = document.querySelector(".white-time");
+const timeDisplayBlack = document.querySelector(".black-time");
 let intervalId = null;
 
 // Timers decrease
@@ -26,8 +26,8 @@ function updateTimers() {
     }
   }
 
-  countdownWhite.innerHTML = formatTime(whiteTime);
-  countdownBlack.innerHTML = formatTime(blackTime);
+  timeDisplayWhite.innerHTML = formatTime(whiteTime);
+  timeDisplayBlack.innerHTML = formatTime(blackTime);
 }
 
 function formatTime(time) {

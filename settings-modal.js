@@ -8,6 +8,7 @@
     settingsModal.classList.remove("hidden");
     settingsModal.classList.add("flex");
     settingsModal.showModal();
+    clearInterval(intervalId);
   });
 
   // Close modal (x button)
@@ -15,6 +16,7 @@
     settingsModal.classList.remove("flex");
     settingsModal.classList.add("hidden");
     setTimeout(() => settingsModal.close(), 200);
+    startTimer();
   });
 
   // Close modal when clicks outside modal
@@ -27,11 +29,13 @@
       e.clientY > modalDimensions.bottom
     )
       closeModal();
+      startTimer();
   });
 
   // Close modal when "Escape"
   window.addEventListener("keydown", e => {
     if (e.key == "Escape") closeModal();
+    startTimer();
   });
 
 
