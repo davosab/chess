@@ -3,3 +3,14 @@ const colorTurn = document.querySelector(".move-message");
 function changeTurn() {
   colorTurn.textContent = (currentTurn == "w" ? "White" : "Black") + " to move";
 }
+
+
+const radioButtons = document.querySelectorAll('input[name="min"]');
+
+radioButtons.forEach(radio => {
+  radio.addEventListener('change', () => {
+    const timeValue = radio.value;
+    timeDisplayWhite.textContent = timeValue;
+    timeDisplayBlack.textContent = timeValue;
+  })
+})
