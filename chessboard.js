@@ -91,7 +91,7 @@ function drawSquares() {
           fill("#ffd477cc");
           rect(j * s, i * s, s, s);
         }
-        for (const move of selectedPiece.getPossibleMoves()) {
+        for (const move of selectedPiece.getPossibleMoves(board)) {
           if (move.row == i && move.col == j) {
             fill("#ffe8b599");
             rect(j * s, i * s, s, s);

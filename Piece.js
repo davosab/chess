@@ -15,9 +15,8 @@ class Piece {
     return i > 7 || i < 0 || j > 7 || j < 0;
   }
 
-  getPossibleMoves() {
+  getPossibleMoves(b, { ignoreOwnKingChecks } = {}) {
     let possibleMoves = [];
-    // let clonedBoard = board.map(row => row.slice());
 
     // add diagonal take if pawn
     if (this instanceof Pawn) this.checkForDiagonalTake();
@@ -32,24 +31,40 @@ class Piece {
       let keepGoingInDirection = true;
       while (keepGoingInDirection) {
         let possibleMove = { row: currentRow, col: currentCol };
+        let possibleMoveAdded = false;
 
         if (this.moveNotOnBoard(currentRow, currentCol)) {
           continue directionsLoop;
         }
 
         // if comes across a piece
-        if (board[currentRow][currentCol] != null) {
-          if (board[currentRow][currentCol].colour != this.colour) {
+        if (b[currentRow][currentCol] != null) {
+          if (b[currentRow][currentCol].colour != this.colour) {
             // dont let pawn frontal take or double move over a piece
             if (this instanceof Pawn && d.col == 0) {
               if (!this.hasMoved) i += 2;
               continue directionsLoop;
             }
             possibleMoves.push(possibleMove);
+            possibleMoveAdded = true;
           }
           keepGoingInDirection = false;
         } else {
           possibleMoves.push(possibleMove);
+          possibleMoveAdded = true;
+        }
+
+        if (!ignoreOwnKingChecks) {
+          let clonedBoard = b.map(row => row.slice());
+          let triedSquare = clonedBoard[currentRow][currentCol];
+          clonedBoard[currentRow][currentCol] = this;
+          clonedBoard[this.row][this.col] = null;
+          if (this.ownKingChecked(clonedBoard)) {
+            clonedBoard[currentRow][currentCol] = triedSquare;
+            clonedBoard[this.row][this.col] = this;
+            if (possibleMoveAdded) possibleMoves.pop();
+            continue directionsLoop;
+          }
         }
         // if pawn, knight or king don't go more steps in same direction
         if (
@@ -69,7 +84,7 @@ class Piece {
   }
 
   moveTo(row, col) {
-    let moveIsPossible = this.getPossibleMoves().some(
+    let moveIsPossible = this.getPossibleMoves(board).some(
       move => move.row == row && move.col == col
     );
 
@@ -94,14 +109,14 @@ class Piece {
         this.directions.splice(1, 1);
       }
     }
-    console.log(this.icon + "'s player giving check: " + this.colourGivesCheck());
-    console.log("Checked on own move: " + this.ownKingChecked());
+    console.log(this.icon + "'s player giving check: " + this.colourGivesCheck(board));
+    console.log("Checked on own move: " + this.ownKingChecked(board));
   }
 
-  ownKingChecked() {
-    for (let row of board) {
+  ownKingChecked(b) {
+    for (let row of b) {
       for (let piece of row) {
-        if (piece && piece.colour != this.colour && piece.thisGivesCheck()) {
+        if (piece && piece.colour != this.colour && piece.thisGivesCheck(b)) {
           return true;
         }
       }
@@ -109,10 +124,10 @@ class Piece {
     return false;
   }
 
-  colourGivesCheck() {
-    for (let row of board) {
+  colourGivesCheck(b) {
+    for (let row of b) {
       for (let piece of row) {
-        if (piece && piece.colour == this.colour && piece.thisGivesCheck()) {
+        if (piece && piece.colour == this.colour && piece.thisGivesCheck(b)) {
           return true;
         }
       }
@@ -120,9 +135,9 @@ class Piece {
     return false;
   }
 
-  thisGivesCheck() {
+  thisGivesCheck(b) {
     let kingRow, kingCol;
-    for (let row of board) {
+    for (let row of b) {
       for (let piece of row) {
         if (piece instanceof King && piece.colour != this.colour) {
           kingRow = piece.row;
@@ -130,7 +145,7 @@ class Piece {
         }
       }
     }
-    return this.getPossibleMoves().some(move =>
+    return this.getPossibleMoves(b, { ignoreOwnKingChecks: true }).some(move =>
       move.row == kingRow && move.col == kingCol
     );
   }

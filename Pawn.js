@@ -33,17 +33,15 @@ class Pawn extends Piece {
 
   checkForDiagonalTake() {
     let rowDirection = this.colour == "w" ? -1 : 1;
-    // console.log("directions before added with splices: \n" + this.directions);
+    
     this.directions.splice(-2, 1, {row: rowDirection, col: -1});
     this.directions.splice(-1, 1, {row: rowDirection, col: 1});
-    // console.log("directions after added with splices: \n" + this.directions);
     
     // remove diagonal takes if enemy pieces not present
     if (
       !board[this.row + rowDirection][this.col - 1] || 
       board[this.row + rowDirection][this.col - 1].colour == this.colour
     ) {
-      // console.log("in if that checks for piece to the left");
       this.directions.splice(-2, 1, null);
     }
 
@@ -51,7 +49,6 @@ class Pawn extends Piece {
       !board[this.row + rowDirection][this.col + 1] || 
       board[this.row + rowDirection][this.col + 1].colour == this.colour
     ) {
-      // console.log("in if that checks for piece to the right");
       this.directions.splice(-1, 1, null);
     }
   }
