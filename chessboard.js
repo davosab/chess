@@ -125,6 +125,7 @@ function mousePressed() {
   let row = Math.floor(mouseY / s);
   let col = Math.floor(mouseX / s);
   const clickedPiece = board[row][col];
+  const clickedPiece = board[row][col];
 
   if (row < 0 || row > 7 || col < 0 || col > 7) return;
 

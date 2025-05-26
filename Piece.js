@@ -24,11 +24,6 @@ class Piece {
 
     directionsLoop: for (let i = 0; i < this.directions.length; i++) {
       const d = this.directions[i];
-      if (!d) {
-        console.log(i + " direction: " + d);
-      } else {
-        console.log(i + " direction: " + d.row + ", " + d.col);
-      }
       if (!d) continue;
 
       let currentRow = this.row + d.row;
@@ -100,7 +95,47 @@ class Piece {
         this.directions.splice(1, 1);
       }
     }
-
-
+    console.log(this.icon + "'s player giving check: " + this.colourGivesCheck());
+    console.log("Checked on own move: " + this.ownKingChecked());
   }
+
+  ownKingChecked() {
+    for (let row of board) {
+      for (let piece of row) {
+        if (piece && piece.colour != this.colour && piece.thisGivesCheck()) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  colourGivesCheck() {
+    for (let row of board) {
+      for (let piece of row) {
+        if (piece && piece.colour == this.colour && piece.thisGivesCheck()) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  thisGivesCheck() {
+    let kingRow, kingCol;
+    for (let row of board) {
+      for (let piece of row) {
+        if (piece instanceof King && piece.colour != this.colour) {
+          kingRow = piece.row;
+          kingCol = piece.col;
+        }
+      }
+    }
+    const possibleMoves = this.getPossibleMoves();
+    let checks = possibleMoves.some(move =>
+      move.row == kingRow && move.col == kingCol
+    );
+    return checks;
+  }
+
 }
