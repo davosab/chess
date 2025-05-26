@@ -10,7 +10,7 @@ const radioButtons = document.querySelectorAll('input[name="min"]');
 radioButtons.forEach(radio => {
   radio.addEventListener('change', () => {
     const timeValue = radio.value;
-    timeDisplayWhite.textContent = timeValue;
-    timeDisplayBlack.textContent = timeValue;
+    timeDisplayWhite.textContent = timeValue + ":00";
+    timeDisplayBlack.textContent = timeValue + ":00";
   })
 })

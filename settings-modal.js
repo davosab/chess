@@ -71,13 +71,18 @@
     p2Name.innerHTML = p2NameInput.value;
 
    const timeInput = document.querySelector('input[name="min"]:checked') 
-    blackTime = timeInput.value * 60;
-    whiteTime = timeInput.value * 60;
+    blackTime = parseInt(timeInput.value * 60);
+    whiteTime = parseInt(timeInput.value * 60);
+    selectedPiece = null;
+    currentTurn = 'w';
 
     initBoard();
 
     setColours();
     closeModal();
+
+    timeDisplayWhite.textContent = formatTime(whiteTime);
+    timeDisplayBlack.textContent = formatTime(blackTime);
   });
 
   cancelBtn.addEventListener("click", () => {
