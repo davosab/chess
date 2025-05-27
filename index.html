@@ -59,13 +59,13 @@
         Player 1
       </div>
       <div class="bg-[#e2e2e2] focus-within:bg-[#d2d2d2] flex px-[14px] pt-[5px] pb-[4px] rounded-[8px]">
-        <input type="text" class="focus:outline-0" maxlength="9" data-p1-name-input>
+        <input type="text" class="focus:outline-0" maxlength="9" value="Player1" data-p1-name-input>
       </div>
       <div class="whitespace-nowrap">
         Player 2
       </div>
       <div class="bg-[#e2e2e2] focus-within:bg-[#d2d2d2] flex px-[14px] pt-[5px] pb-[4px] rounded-[8px]">
-        <input type="text" class="focus:outline-0" maxlength="9" data-p2-name-input>
+        <input type="text" class="focus:outline-0" maxlength="9" value="Player2" data-p2-name-input>
       </div>
       <div>
         Time
@@ -174,7 +174,6 @@
   </dialog>
 
   <!--Draw game finish modal-->
-
   <dialog class="draw-game-modal hidden rounded-[16px] flex flex-col w-[332px] py-[36px] px-[24px] relative left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 ">
   <div>
       <div>
@@ -186,6 +185,17 @@
         <div class="flex flex-row justify-center items-center gap-[25px] top-10">
           <button class="play-again-yes-button hover: cursor-pointer rounded-[8px] px-[24px] py-[11px] w-[175px] bg-[#71BC4F]">Yes</button>
           <button class="play-again-no-button hover: cursor-pointer rounded-[8px] px-[24px] py-[11px] w-[175px] bg-[#BC4F4F]">No</button>
+        </div>
+      </div>
+  </dialog>
+
+  <!--Stopped playing modal-->
+  <dialog class="finished-game-modal hidden rounded-[16px] flex flex-col w-[332px] py-[36px] px-[24px] relative left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 ">
+  <div>
+      <div>
+        <div class="play-again-text text-center text-[20px] font-bold pb-[12px]">
+          Thank you for playing. <br>
+          Hope to see you again!
         </div>
       </div>
   </dialog>
