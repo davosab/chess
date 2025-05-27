@@ -104,7 +104,6 @@ class Piece {
       }
     }
 
-    if (this instanceof King) console.log(possibleMoves);
     return possibleMoves;
   }
 
@@ -134,8 +133,11 @@ class Piece {
         this.directions.splice(1, 1);
       }
     }
-    console.log(this.icon + "'s player giving check: " + this.colourGivesCheck(board));
-    console.log("Checked on own move: " + this.ownKingChecked(board));
+
+    if (this.gaveCheckmate()) {
+      // this is where to deal with a checkmate would go :)
+      console.log(this.colour + " gave checkmate!");
+    }
   }
 
   ownKingChecked(b) {
@@ -175,4 +177,19 @@ class Piece {
     );
   }
 
+  gaveCheckmate() {
+    let enemyKing;
+    let enemyMoves = false;
+    for (let row of board) {
+      for (let piece of row) {
+        if (piece && piece.colour != this.colour) {
+          if (piece instanceof King) enemyKing = piece;
+          if (piece.getPossibleMoves(board).length > 0) {
+            enemyMoves = true;
+          }
+        }
+      }
+    }
+    return (enemyKing.getPossibleMoves(board).length == 0 && !enemyMoves);
+  }
 }
