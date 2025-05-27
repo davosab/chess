@@ -20,6 +20,10 @@
   <script src="King.js" defer></script>
   <script src="header.js" defer></script>
   <script src="timer.js" defer></script>
+  <script src="draw-modal.js" defer></script>
+  <script src="draw-game-modal.js" defer></script>
+
+
 
 
   <title>Chess</title>
@@ -147,8 +151,41 @@
 
         <div class="flex flex-col justify-center items-center gap-[25px] top-10">
           <button class=" continue-button hover: cursor-pointer rounded-[8px] px-[24px] py-[11px] w-[175px] bg-[#71BC4F]">Continue Match</button>
-          <button class="hover: cursor-pointer rounded-[8px] px-[24px] py-[11px] w-[175px] bg-[#F3E335]">Offer a Draw</button>
+          <button class=" draw-button hover: cursor-pointer rounded-[8px] px-[24px] py-[11px] w-[175px] bg-[#F3E335]">Offer a Draw</button>
           <button class="hover: cursor-pointer rounded-[8px] px-[24px] py-[11px] w-[175px] bg-[#BC4F4F]">Resign</button>
+        </div>
+      </div>
+  </dialog>
+
+  <!--Offer a draw modal-->
+<dialog class="draw-modal hidden rounded-[16px] flex flex-col w-[332px] py-[36px] px-[24px] relative left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 ">
+  <div>
+      <div>
+        <div class="draw-text text-center text-[20px] font-bold pb-[12px]">
+          Player1 offered you a draw.
+          Do you accept it?
+        </div>
+        <div class="border-t mb-5"></div>
+        <div class="flex flex-row justify-center items-center gap-[25px] top-10">
+          <button class="draw-yes-button hover: cursor-pointer rounded-[8px] px-[24px] py-[11px] w-[175px] bg-[#71BC4F]">Yes</button>
+          <button class="draw-no-button hover: cursor-pointer rounded-[8px] px-[24px] py-[11px] w-[175px] bg-[#BC4F4F]">No</button>
+        </div>
+      </div>
+  </dialog>
+
+  <!--Draw game finish modal-->
+
+  <dialog class="draw-game-modal hidden rounded-[16px] flex flex-col w-[332px] py-[36px] px-[24px] relative left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 ">
+  <div>
+      <div>
+        <div class="play-again-text text-center text-[20px] font-bold pb-[12px]">
+          Game ended in a draw.<br>
+          Do you want to play again?
+        </div>
+        <div class="border-t mb-5"></div>
+        <div class="flex flex-row justify-center items-center gap-[25px] top-10">
+          <button class="play-again-yes-button hover: cursor-pointer rounded-[8px] px-[24px] py-[11px] w-[175px] bg-[#71BC4F]">Yes</button>
+          <button class="play-again-no-button hover: cursor-pointer rounded-[8px] px-[24px] py-[11px] w-[175px] bg-[#BC4F4F]">No</button>
         </div>
       </div>
   </dialog>
