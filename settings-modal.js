@@ -75,6 +75,7 @@
     whiteTime = parseInt(timeInput.value * 60);
     selectedPiece = null;
     currentTurn = 'w';
+    colorTurn.textContent = "White to move";
 
     initBoard();
 
