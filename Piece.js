@@ -15,6 +15,10 @@ class Piece {
     return i > 7 || i < 0 || j > 7 || j < 0;
   }
 
+  clone() {
+    return new this.constructor(this.colour, this.row, this.col);
+  }
+
   getPossibleMoves(b, { ignoreOwnKingChecks } = {}) {
     let possibleMoves = [];
 
@@ -55,17 +59,37 @@ class Piece {
         }
 
         if (!ignoreOwnKingChecks) {
-          let clonedBoard = b.map(row => row.slice());
+          let clonedBoard = b.map(row =>
+            row.map(piece => piece ? piece.clone() : null)
+          );
+
           let triedSquare = clonedBoard[currentRow][currentCol];
           clonedBoard[currentRow][currentCol] = this;
           clonedBoard[this.row][this.col] = null;
+
+          // temporarily update piece position
+          let originalRow = this.row;
+          let originalCol = this.col;
+          this.row = currentRow;
+          this.col = currentCol;
+
           if (this.ownKingChecked(clonedBoard)) {
+
+            // restore "this" original position
+            this.row = originalRow;
+            this.col = originalCol;
+
             clonedBoard[currentRow][currentCol] = triedSquare;
             clonedBoard[this.row][this.col] = this;
             if (possibleMoveAdded) possibleMoves.pop();
-            continue directionsLoop;
           }
+
+          // restore "this" original position
+          this.row = originalRow;
+          this.col = originalCol;
+
         }
+
         // if pawn, knight or king don't go more steps in same direction
         if (
           this instanceof Pawn ||
@@ -80,6 +104,7 @@ class Piece {
       }
     }
 
+    if (this instanceof King) console.log(possibleMoves);
     return possibleMoves;
   }
 
