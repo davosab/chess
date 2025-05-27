@@ -135,7 +135,7 @@ class Piece {
     }
 
     if (this.gaveCheckmate()) {
-      // this is where to deal with a checkmate would go :)
+      // this is where code to deal with a checkmate would go :)
       console.log(this.colour + " gave checkmate!");
     }
   }
