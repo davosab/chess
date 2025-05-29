@@ -1,6 +1,8 @@
 const pauseModal = document.querySelector(".pause-modal");
+const resignModal = document.querySelector(".resign-modal");
 const pauseButton = document.querySelector(".pause-button");
 const closeButton = document.querySelector(".close-button");
+const resignButton = document.querySelector(".resign-button");
 const continueButton = document.querySelector(".continue-button");
 const drawButton = document.querySelector(".draw-button");
 const drawModalText = document.querySelector(".draw-text");
@@ -52,11 +54,25 @@ continueButton.addEventListener('click', function () {
 // Draw modal pops-up when "Offer a draw" is clicked
 drawButton.addEventListener('click', function() {
   closePauseModal();
-  drawModal.classList.remove('hidden')
-  drawModal.showModal()
+  drawModal.classList.remove('hidden');
+  drawModal.showModal();
    if(currentTurn === 'w') {
-    drawModalText.innerHTML = player1Input.value + " offered you a draw.<br>Do you accept it?"
+    drawModalText.innerHTML = player1Input.value + " offered you a draw.<br>Do you accept it?";
    } else {
-    drawModalText.innerHTML = player2Input.value + " offered you a draw.<br>Do you accept it?"
+    drawModalText.innerHTML = player2Input.value + " offered you a draw.<br>Do you accept it?";
    }
 })
+
+// Resign Modal pops up when Resign is clicked
+resignButton.addEventListener('click', function() {
+  closePauseModal();
+  resignModal.classList.remove("hidden");
+  resignModal.showModal();
+})
+
+// Prevent ESC key from closing the modal
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape"){
+    e.preventDefault();
+  }
+});
