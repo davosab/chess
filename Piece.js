@@ -135,8 +135,13 @@ class Piece {
     }
 
     if (this.gaveCheckmate()) {
-      // this is where code to deal with a checkmate would go :)
-      console.log(this.colour + " gave checkmate!");
+        winnerModal.classList.remove('hidden');
+        winnerModal.showModal();
+    if(currentTurn !== 'w') {
+        winnerText.innerHTML = player1Input.value + " won by Checkmate!<br> Do you want to play again?";
+    } else {
+        winnerText.innerHTML = player2Input.value + " won by Checkmate!<br> Do you want to play again?";
+    }
     }
   }
 

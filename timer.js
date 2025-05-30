@@ -28,7 +28,7 @@ function updateTimers() {
   timeDisplayWhite.innerHTML = formatTime(whiteTime);
   timeDisplayBlack.innerHTML = formatTime(blackTime);
 }
-
+// Formats time to mm:ss format
 function formatTime(time) {
   const minutes = Math.floor(time / 60);
   let seconds = time % 60;
@@ -36,11 +36,13 @@ function formatTime(time) {
   return `${minutes}:${seconds}`;
 }
 
+// makes the timer work
 function startTimer() {
   if(intervalId) clearInterval(intervalId);
   intervalId = setInterval(updateTimers, 1000);
 }
 
+// Every time that a move is played, the turn switches
 function switchTurn() {
   currentTurn = (currentTurn === "w") ? "b" : "w";
   changeTurn();

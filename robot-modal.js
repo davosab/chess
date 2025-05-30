@@ -7,12 +7,13 @@ const closeRobotModal = function() {
     robotModal.close();
 }
 
-
+// If cancel button is pressed, the robot modal closes and the Default starting game modal pops up
 robotCancel.addEventListener('click', function() {
   closeRobotModal();
   openStartGameModal();
 })
 
+// If the start nw game button is pressed, a new game vs the robot starts
 robotStart.addEventListener('click', function() {
       if (p1NameInput.value.trim() == "") {
       
