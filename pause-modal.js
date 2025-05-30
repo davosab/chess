@@ -70,9 +70,5 @@ resignButton.addEventListener('click', function() {
   resignModal.showModal();
 })
 
-// Prevent ESC key from closing the modal
-document.addEventListener("keydown", function (e) {
-  if (e.key === "Escape"){
-    e.preventDefault();
-  }
-});
+
+

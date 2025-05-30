@@ -17,7 +17,6 @@ function setup() {
 
   currentTurn = "w";
   changeTurn();
-  startTimer()
 }
 
 function draw() {

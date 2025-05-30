@@ -24,6 +24,10 @@
   <script src="draw-game-modal.js" defer></script>
   <script src="resign-modal.js" defer></script>
   <script src="winner-modal.js" defer></script>
+  <script src="start-game-modal.js" defer></script>
+  <script src="robot-modal.js" defer></script>
+
+
   <title>Chess</title>
 </head>
 
@@ -100,23 +104,99 @@
       </div>
 
       <div>
-        Play against a Robot
+        Play the ChessBot
       </div>
       <label>
-        <input class="hover:cursor-pointer opacity-0 absolute w-[84px] h-[36px]" type="button" name="robot">
+        <input class="robot-button hover:cursor-pointer opacity-0 absolute w-[84px] h-[36px]" type="button" name="robot">
         <div class="hover:cursor-pointer bg-[#b2b2b2] text-[20px] rounded-[8px] grid content-center justify-center w-[84px] h-[36px]">
         🤖
         </div>
       </label>
-
-
-
       <div class="buttons-container pt-[16px] col-span-2 self-center flex justify-center content-center">
-        <button class="hover:cursor-pointer hover:bg-[#71BC4F] bg-[#8ad268] px-[24px] py-[11px] rounded-[8px]" data-start-new-btn>
+        <button class="start-new-game-button hover:cursor-pointer hover:bg-[#71BC4F] bg-[#8ad268] px-[24px] py-[11px] rounded-[8px]" data-start-new-btn>
           Start new game
         </button>
       </div>
   </dialog>
+
+
+
+
+<!-- Play against robot modal -->
+  <dialog class=" robot-modal hidden rounded-[16px] flex flex-col py-[36px] px-[24px] relative left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2" data-settings-modal>
+    <div class="text-center text-[20px] font-bold pb-[12px]">
+      Play vs. Robot
+    </div>
+    <hr>
+    <div class="inputs-container items-center pt-[24px] px-[12px] grid grid-cols-[auto_1fr] gap-[20px]">
+
+      <div class="whitespace-nowrap">
+        Player 1
+      </div>
+      <div class="bg-[#e2e2e2] focus-within:bg-[#d2d2d2] flex px-[14px] pt-[5px] pb-[4px] rounded-[8px]">
+        <input type="text" class="focus:outline-0" maxlength="9" value="Player1" data-p1-name-input>
+      </div>
+      <div>
+        Time
+      </div>
+      <div class="container flex gap-[8px] relative">
+      <label>
+        <input class="hover:cursor-pointer opacity-0 absolute w-[84px] h-[36px]" type="radio" name="min" value="3">
+        <div class="hover:cursor-pointer bg-[#b2b2b2] text-[14px] rounded-[8px] grid content-center justify-center w-[84px] h-[36px]">
+          3 min
+        </div>
+      </label>
+      <label>
+        <input class="hover:cursor-pointer opacity-0 left-[92px] absolute w-[84px] h-[36px]" type="radio" name="min" value="5">
+        <div class="hover:cursor-pointer bg-[#b2b2b2] text-[14px] rounded-[8px] grid content-center justify-center w-[84px] h-[36px]">
+          5 min
+        </div>
+      </label>
+      <label>
+        <input class="hover:cursor-pointer opacity-0 left-[184px] absolute w-[84px] h-[36px]" type="radio" name="min" value="10" checked>
+        <div class="hover:cursor-pointer bg-[#b2b2b2] text-[14px] rounded-[8px] grid content-center justify-center w-[84px] h-[36px]">
+          10 min
+        </div>
+      </label>
+      </div>
+      <div>
+        Colours
+      </div>
+      <div class="container flex gap-[8px] relative">
+
+        <input class="hover:cursor-pointer absolute w-[36px] h-[36px] z-10 opacity-0" type="radio" name="colours" data-white="#ffffff" data-black="#808080">
+        <div class="outline-1 outline-[#20214b] hover:cursor-pointer h-[36px] w-[36px] bg-[#ffffff] rounded-[8px] relative overflow-hidden">
+          <div class="absolute h-[18px] w-[18px] top-0 left-0 bg-[#808080]"></div>
+          <div class="absolute h-[18px] w-[18px] bottom-0 right-0 bg-[#808080]"></div>
+        </div>
+
+        <input class="hover:cursor-pointer absolute left-[44px] w-[36px] h-[36px] z-10 opacity-0" type="radio" name="colours" data-white="#FDF4E3" data-black="#6E8532">
+        <div class="outline-1 outline-[#20214b] hover:cursor-pointer h-[36px] w-[36px] bg-[#FDF4E3] rounded-[8px] relative overflow-hidden">
+          <div class="absolute h-[18px] w-[18px] top-0 left-0 bg-[#6E8532]"></div>
+          <div class="absolute h-[18px] w-[18px] bottom-0 right-0 bg-[#6E8532]"></div>
+        </div>
+
+        <input class="hover:cursor-pointer absolute left-[88px] w-[36px] h-[36px] z-10 opacity-0" type="radio" name="colours" data-white="#D6E6E5" data-black="#5b3747">
+        <div class="outline-1 outline-[#20214b] hover:cursor-pointer h-[36px] w-[36px] bg-[#D6E6E5] rounded-[8px] relative overflow-hidden">
+          <div class="absolute h-[18px] w-[18px] top-0 left-0 bg-[#5b3747]"></div>
+          <div class="absolute h-[18px] w-[18px] bottom-0 right-0 bg-[#5b3747]"></div>
+        </div>
+
+      </div>
+
+      <div class="buttons-container pt-[16px] col-span-2 self-center grid grid-cols-[1fr_1fr] gap-[16px]">
+        <button class=" robot-cancel-button hover:cursor-pointer hover:bg-[#BC4F4F] bg-[#ce6464] px-[24px] py-[11px] rounded-[8px]" data-cancel-btn>
+          Cancel
+        </button>
+        <button class="robot-start-button hover:cursor-pointer hover:bg-[#71BC4F] bg-[#8ad268] px-[24px] py-[11px] rounded-[8px]" data-start-new-game-btn>
+          Start new game
+        </button>
+      </div>
+  </dialog>
+
+
+
+
 
   <!-- Settings modal -->
   <dialog class="hidden rounded-[16px] flex flex-col py-[36px] px-[24px] relative left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2" data-settings-modal>
@@ -206,11 +286,13 @@
         <button class="hover:cursor-pointer hover:bg-[#BC4F4F] bg-[#ce6464] px-[24px] py-[11px] rounded-[8px]" data-cancel-btn>
           Cancel
         </button>
-        <button class="hover:cursor-pointer hover:bg-[#71BC4F] bg-[#8ad268] px-[24px] py-[11px] rounded-[8px]" data-start-new-game-btn>
+        <button class="start-game-button hover:cursor-pointer hover:bg-[#71BC4F] bg-[#8ad268] px-[24px] py-[11px] rounded-[8px]" data-start-new-game-btn>
           Start new game
         </button>
       </div>
   </dialog>
+
+
 
   <!--Pause modal-->
   <dialog class="pause-modal hidden rounded-[16px] flex flex-col w-[332px] py-[36px] px-[24px] relative left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 ">
@@ -244,6 +326,8 @@
       </div>
   </dialog>
 
+
+
   <!--Offer a draw modal-->
 <dialog class="draw-modal hidden rounded-[16px] flex flex-col w-[332px] py-[36px] px-[24px] relative left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 ">
   <div>
@@ -259,6 +343,8 @@
         </div>
       </div>
   </dialog>
+
+
 
   <!--Draw game finish modal-->
   <dialog class="draw-game-modal hidden rounded-[16px] flex flex-col w-[332px] py-[36px] px-[24px] relative left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 ">
@@ -276,6 +362,8 @@
       </div>
   </dialog>
 
+
+
   <!--Stopped playing modal-->
   <dialog class="finished-game-modal hidden rounded-[16px] flex flex-col w-[332px] py-[36px] px-[24px] relative left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 ">
   <div>
@@ -286,6 +374,8 @@
         </div>
       </div>
   </dialog>
+
+
 
   <!--Resign modal-->
   <dialog class="resign-modal hidden rounded-[16px] flex flex-col w-[332px] py-[36px] px-[24px] relative left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 ">
@@ -301,6 +391,8 @@
         </div>
       </div>
   </dialog>
+
+
 
 
    <!--Winner modal-->

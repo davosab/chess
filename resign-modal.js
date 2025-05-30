@@ -22,4 +22,6 @@ resignYesButton.addEventListener('click', function() {
 // If player presses "no" then the game continues
 resignNoButton.addEventListener('click', function() {
     closeResignModal();
+    startTimer();
 })
+

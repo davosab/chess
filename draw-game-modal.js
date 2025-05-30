@@ -23,3 +23,4 @@ playAgainNoButton.addEventListener("click", function () {
   finishedGameModal.showModal();
 });
 
+
