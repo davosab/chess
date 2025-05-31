@@ -143,6 +143,7 @@ class Piece {
     } else {
         winnerText.innerHTML = p2Name.innerHTML + " won by Checkmate!<br> Do you want to play again?";
     }
+    clearInterval(intervalId);
     }
 
   }

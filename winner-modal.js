@@ -1,6 +1,5 @@
 const winnerYesButton = document.querySelector(".winner-yes-button");
 const winnerNoButton = document.querySelector(".winner-no-button");
-
 const closeWinnerModal = function () {
   winnerModal.classList.toggle('hidden');
   winnerModal.close();
@@ -19,4 +18,3 @@ winnerNoButton.addEventListener('click', function () {
   finishedGameModal.classList.remove("hidden");
   finishedGameModal.showModal();
 });
-
