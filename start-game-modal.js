@@ -35,5 +35,4 @@ vsPlayerButton.addEventListener('click', function() {
 vsRobotButton.addEventListener('click', function() {
     closeStartModal();
     openRobotModal();
-    vsBot = true;
 })

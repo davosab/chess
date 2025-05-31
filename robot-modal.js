@@ -39,6 +39,7 @@ robotStart.addEventListener("click", function () {
   whiteTime = parseInt(timeInput.value * 60);
   selectedPiece = null;
   currentTurn = "w";
+  vsBot = true;
   colorTurn.textContent = "White to move";
   initBoard();
   setColours();
@@ -51,7 +52,7 @@ robotStart.addEventListener("click", function () {
 // robot makes random move
 const robotMoves = function() {
   if(vsBot) {
-    
+
   const botColour = "b";
   const botMoves = [];
 
