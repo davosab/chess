@@ -137,12 +137,14 @@ class Piece {
     if (this.gaveCheckmate()) {
         winnerModal.classList.remove('hidden');
         winnerModal.showModal();
+        vsBot = false;
     if(currentTurn !== 'w') {
-        winnerText.innerHTML = player1Input.value + " won by Checkmate!<br> Do you want to play again?";
+        winnerText.innerHTML = p1Name.innerHTML + " won by Checkmate!<br> Do you want to play again?";
     } else {
-        winnerText.innerHTML = player2Input.value + " won by Checkmate!<br> Do you want to play again?";
+        winnerText.innerHTML = p2Name.innerHTML + " won by Checkmate!<br> Do you want to play again?";
     }
     }
+
   }
 
   ownKingChecked(b) {

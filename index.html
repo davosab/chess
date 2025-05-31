@@ -26,6 +26,8 @@
   <script src="winner-modal.js" defer></script>
   <script src="start-game-modal.js" defer></script>
   <script src="robot-modal.js" defer></script>
+  <script src="player-modal.js" defer></script>
+
 
 
   <title>Chess</title>
@@ -36,86 +38,17 @@
 
 
   <!--Starting game modal-->
-  <dialog class="start-game hidden rounded-[16px] flex flex-col py-[36px] px-[24px] relative left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2" start-game-modal>      
-    <div class="text-center text-[20px] font-bold pb-[12px]">
-      Chess
-    </div>
-    <hr>
-    <div class="inputs-container items-center pt-[24px] px-[12px] grid grid-cols-[auto_1fr] gap-[20px]">
-
-      <div class="whitespace-nowrap">
-        Player 1
-      </div>
-      <div class="bg-[#e2e2e2] focus-within:bg-[#d2d2d2] flex px-[14px] pt-[5px] pb-[4px] rounded-[8px]">
-        <input type="text" class="focus:outline-0" maxlength="9" value="Player1" data-player1-name-input>
-      </div>
-      <div class="whitespace-nowrap">
-        Player 2
-      </div>
-      <div class="bg-[#e2e2e2] focus-within:bg-[#d2d2d2] flex px-[14px] pt-[5px] pb-[4px] rounded-[8px]">
-        <input type="text" class="focus:outline-0" maxlength="9" value="Player2" data-player2-name-input>
-      </div>
+<dialog class="start-game hidden rounded-[16px] flex flex-col w-[500px] py-[36px] px-[24px] relative left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 ">
+  <div>
       <div>
-        Time
-      </div>
-      <div class="container flex gap-[8px] relative">
-      <label>
-        <input class="hover:cursor-pointer opacity-0 absolute w-[84px] h-[36px]" type="radio" name="min" value="3">
-        <div class="hover:cursor-pointer bg-[#b2b2b2] text-[14px] rounded-[8px] grid content-center justify-center w-[84px] h-[36px]">
-          3 min
+        <div class="start-text text-center text-[20px] font-bold pb-[12px]">
+         Choose your gamemode
         </div>
-      </label>
-      <label>
-        <input class="hover:cursor-pointer opacity-0 left-[92px] absolute w-[84px] h-[36px]" type="radio" name="min" value="5">
-        <div class="hover:cursor-pointer bg-[#b2b2b2] text-[14px] rounded-[8px] grid content-center justify-center w-[84px] h-[36px]">
-          5 min
+        <div class="border-t mb-5"></div>
+        <div class="flex flex-row justify-center items-center gap-[25px] top-10">
+          <button class="player-player-button hover: cursor-pointer rounded-[8px] px-[24px] py-[15px] w-[250px] bg-[#71BC4F]">🧑Player vs. Player🧑</button>
+          <button class="player-robot-button hover: cursor-pointer rounded-[8px] px-[24px] py-[15px] w-[250px] bg-[#b2b2b2]">🧑Player vs Robot🤖</button>
         </div>
-      </label>
-      <label>
-        <input class="hover:cursor-pointer opacity-0 left-[184px] absolute w-[84px] h-[36px]" type="radio" name="min" value="10" checked>
-        <div class="hover:cursor-pointer bg-[#b2b2b2] text-[14px] rounded-[8px] grid content-center justify-center w-[84px] h-[36px]">
-          10 min
-        </div>
-      </label>
-      </div>
-      <div>
-        Colours
-      </div>
-      <div class="container flex gap-[8px] relative">
-
-        <input class="hover:cursor-pointer absolute w-[36px] h-[36px] z-10 opacity-0" type="radio" name="colours" data-white="#ffffff" data-black="#808080">
-        <div class="outline-1 outline-[#20214b] hover:cursor-pointer h-[36px] w-[36px] bg-[#ffffff] rounded-[8px] relative overflow-hidden">
-          <div class="absolute h-[18px] w-[18px] top-0 left-0 bg-[#808080]"></div>
-          <div class="absolute h-[18px] w-[18px] bottom-0 right-0 bg-[#808080]"></div>
-        </div>
-
-        <input class="hover:cursor-pointer absolute left-[44px] w-[36px] h-[36px] z-10 opacity-0" type="radio" name="colours" data-white="#FDF4E3" data-black="#6E8532">
-        <div class="outline-1 outline-[#20214b] hover:cursor-pointer h-[36px] w-[36px] bg-[#FDF4E3] rounded-[8px] relative overflow-hidden">
-          <div class="absolute h-[18px] w-[18px] top-0 left-0 bg-[#6E8532]"></div>
-          <div class="absolute h-[18px] w-[18px] bottom-0 right-0 bg-[#6E8532]"></div>
-        </div>
-
-        <input class="hover:cursor-pointer absolute left-[88px] w-[36px] h-[36px] z-10 opacity-0" type="radio" name="colours" data-white="#D6E6E5" data-black="#5b3747">
-        <div class="outline-1 outline-[#20214b] hover:cursor-pointer h-[36px] w-[36px] bg-[#D6E6E5] rounded-[8px] relative overflow-hidden">
-          <div class="absolute h-[18px] w-[18px] top-0 left-0 bg-[#5b3747]"></div>
-          <div class="absolute h-[18px] w-[18px] bottom-0 right-0 bg-[#5b3747]"></div>
-        </div>
-
-      </div>
-
-      <div>
-        Play the ChessBot
-      </div>
-      <label>
-        <input class="robot-button hover:cursor-pointer opacity-0 absolute w-[84px] h-[36px]" type="button" name="robot">
-        <div class="hover:cursor-pointer bg-[#b2b2b2] text-[20px] rounded-[8px] grid content-center justify-center w-[84px] h-[36px]">
-        🤖
-        </div>
-      </label>
-      <div class="buttons-container pt-[16px] col-span-2 self-center flex justify-center content-center">
-        <button class="start-new-game-button hover:cursor-pointer hover:bg-[#71BC4F] bg-[#8ad268] px-[24px] py-[11px] rounded-[8px]" data-start-new-btn>
-          Start new game
-        </button>
       </div>
   </dialog>
 
@@ -123,8 +56,8 @@
 
 
 <!-- Play against robot modal -->
-  <dialog class=" robot-modal hidden rounded-[16px] flex flex-col py-[36px] px-[24px] relative left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2" data-settings-modal>
-    <div class="text-center text-[20px] font-bold pb-[12px]">
+  <dialog class=" robot-modal hidden rounded-[16px] flex flex-col py-[36px] px-[24px] relative left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2" data-robot-modal>
+    <div class=" robot-text text-center text-[20px] font-bold pb-[12px]">
       Play vs. Robot
     </div>
     <hr>
@@ -134,7 +67,7 @@
         Player 1
       </div>
       <div class="bg-[#e2e2e2] focus-within:bg-[#d2d2d2] flex px-[14px] pt-[5px] pb-[4px] rounded-[8px]">
-        <input type="text" class="focus:outline-0" maxlength="9" value="Player1" data-p1-name-input>
+        <input type="text" class="focus:outline-0" maxlength="9" value="Player1" data-robot-p1-name-input>
       </div>
       <div>
         Time
@@ -185,10 +118,89 @@
       </div>
 
       <div class="buttons-container pt-[16px] col-span-2 self-center grid grid-cols-[1fr_1fr] gap-[16px]">
-        <button class=" robot-cancel-button hover:cursor-pointer hover:bg-[#BC4F4F] bg-[#ce6464] px-[24px] py-[11px] rounded-[8px]" data-cancel-btn>
+        <button class=" robot-cancel-button hover:cursor-pointer hover:bg-[#BC4F4F] bg-[#ce6464] px-[24px] py-[11px] rounded-[8px]" data-robot-cancel-btn>
           Cancel
         </button>
-        <button class="robot-start-button hover:cursor-pointer hover:bg-[#71BC4F] bg-[#8ad268] px-[24px] py-[11px] rounded-[8px]" data-start-new-game-btn>
+        <button class="robot-start-button hover:cursor-pointer hover:bg-[#71BC4F] bg-[#8ad268] px-[24px] py-[11px] rounded-[8px]" data-robot-start-new-game-btn>
+          Start new game
+        </button>
+      </div>
+  </dialog>
+
+
+ <!--Player vs Player Modal-->
+  <dialog class=" player-modal hidden rounded-[16px] flex flex-col py-[36px] px-[24px] relative left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2" data-player-modal>
+    <div class="text-center text-[20px] font-bold pb-[12px]">
+      Player vs. Player
+    </div>
+    <hr>
+    <div class="inputs-container items-center pt-[24px] px-[12px] grid grid-cols-[auto_1fr] gap-[20px]">
+
+      <div class="whitespace-nowrap">
+        Player 1
+      </div>
+      <div class="bg-[#e2e2e2] focus-within:bg-[#d2d2d2] flex px-[14px] pt-[5px] pb-[4px] rounded-[8px]">
+        <input type="text" class="focus:outline-0" maxlength="9" value="Player1" data-player-p1-name-input>
+      </div>
+      <div class="whitespace-nowrap">
+        Player 2
+      </div>
+      <div class="bg-[#e2e2e2] focus-within:bg-[#d2d2d2] flex px-[14px] pt-[5px] pb-[4px] rounded-[8px]">
+        <input type="text" class="focus:outline-0" maxlength="9" value="Player2" data-player-p2-name-input>
+      </div>
+      <div>
+        Time
+      </div>
+      <div class="container flex gap-[8px] relative">
+      <label>
+        <input class="hover:cursor-pointer opacity-0 absolute w-[84px] h-[36px]" type="radio" name="min" value="3">
+        <div class="hover:cursor-pointer bg-[#b2b2b2] text-[14px] rounded-[8px] grid content-center justify-center w-[84px] h-[36px]">
+          3 min
+        </div>
+      </label>
+      <label>
+        <input class="hover:cursor-pointer opacity-0 left-[92px] absolute w-[84px] h-[36px]" type="radio" name="min" value="5">
+        <div class="hover:cursor-pointer bg-[#b2b2b2] text-[14px] rounded-[8px] grid content-center justify-center w-[84px] h-[36px]">
+          5 min
+        </div>
+      </label>
+      <label>
+        <input class="hover:cursor-pointer opacity-0 left-[184px] absolute w-[84px] h-[36px]" type="radio" name="min" value="10" checked>
+        <div class="hover:cursor-pointer bg-[#b2b2b2] text-[14px] rounded-[8px] grid content-center justify-center w-[84px] h-[36px]">
+          10 min
+        </div>
+      </label>
+      </div>
+      <div>
+        Colours
+      </div>
+      <div class="container flex gap-[8px] relative">
+
+        <input class="hover:cursor-pointer absolute w-[36px] h-[36px] z-10 opacity-0" type="radio" name="colours" data-white="#ffffff" data-black="#808080">
+        <div class="outline-1 outline-[#20214b] hover:cursor-pointer h-[36px] w-[36px] bg-[#ffffff] rounded-[8px] relative overflow-hidden">
+          <div class="absolute h-[18px] w-[18px] top-0 left-0 bg-[#808080]"></div>
+          <div class="absolute h-[18px] w-[18px] bottom-0 right-0 bg-[#808080]"></div>
+        </div>
+
+        <input class="hover:cursor-pointer absolute left-[44px] w-[36px] h-[36px] z-10 opacity-0" type="radio" name="colours" data-white="#FDF4E3" data-black="#6E8532">
+        <div class="outline-1 outline-[#20214b] hover:cursor-pointer h-[36px] w-[36px] bg-[#FDF4E3] rounded-[8px] relative overflow-hidden">
+          <div class="absolute h-[18px] w-[18px] top-0 left-0 bg-[#6E8532]"></div>
+          <div class="absolute h-[18px] w-[18px] bottom-0 right-0 bg-[#6E8532]"></div>
+        </div>
+
+        <input class="hover:cursor-pointer absolute left-[88px] w-[36px] h-[36px] z-10 opacity-0" type="radio" name="colours" data-white="#D6E6E5" data-black="#5b3747">
+        <div class="outline-1 outline-[#20214b] hover:cursor-pointer h-[36px] w-[36px] bg-[#D6E6E5] rounded-[8px] relative overflow-hidden">
+          <div class="absolute h-[18px] w-[18px] top-0 left-0 bg-[#5b3747]"></div>
+          <div class="absolute h-[18px] w-[18px] bottom-0 right-0 bg-[#5b3747]"></div>
+        </div>
+
+      </div>
+
+      <div class="buttons-container pt-[16px] col-span-2 self-center grid grid-cols-[1fr_1fr] gap-[16px]">
+        <button class="player-cancel-game-button hover:cursor-pointer hover:bg-[#BC4F4F] bg-[#ce6464] px-[24px] py-[11px] rounded-[8px]" data-player-cancel-btn>
+          Cancel
+        </button>
+        <button class="player-start-game-button hover:cursor-pointer hover:bg-[#71BC4F] bg-[#8ad268] px-[24px] py-[11px] rounded-[8px]" data-player-start-new-game-btn>
           Start new game
         </button>
       </div>
@@ -197,9 +209,8 @@
 
 
 
-
   <!-- Settings modal -->
-  <dialog class="hidden rounded-[16px] flex flex-col py-[36px] px-[24px] relative left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2" data-settings-modal>
+  <dialog class=" settings-modal hidden rounded-[16px] flex flex-col py-[36px] px-[24px] relative left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2" data-settings-modal>
 
     <svg class="close-mark absolute hover:cursor-pointer right-[24px] top-[24px]" data-close-button width="18" height="18" viewBox="6 6 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000">
       <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -283,7 +294,7 @@
       </div>
 
       <div class="buttons-container pt-[16px] col-span-2 self-center grid grid-cols-[1fr_1fr] gap-[16px]">
-        <button class="hover:cursor-pointer hover:bg-[#BC4F4F] bg-[#ce6464] px-[24px] py-[11px] rounded-[8px]" data-cancel-btn>
+        <button class="cancel-game-button hover:cursor-pointer hover:bg-[#BC4F4F] bg-[#ce6464] px-[24px] py-[11px] rounded-[8px]" data-cancel-btn>
           Cancel
         </button>
         <button class="start-game-button hover:cursor-pointer hover:bg-[#71BC4F] bg-[#8ad268] px-[24px] py-[11px] rounded-[8px]" data-start-new-game-btn>
@@ -411,6 +422,8 @@
   </dialog>
 
 
+
+  <!--Header-->
   <header class="flex justify-center pt-[48px] px-[48px] pb-[16px]">
     <div class="settings-button hover:cursor-pointer self-start" data-settings-button>
       <svg class="h-[40px]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -457,8 +470,12 @@
     </div>
   </header>
 
+
+  <!--main-->
   <main class="grow flex justify-center items-center mb-[16px] "></main>
 
+
+  <!--Footer-->
   <footer class="bg-[#22222280] backdrop-blur-lg p-[16px] text-[#dddddd]">
     Developed by <a style="color: #d7be78" href="https://github.com/davosab" target="_blank" rel="noopener noreferrer">davosab</a> & <a style="color: #d7be78" href="https://github.com/morosache" target="_blank" rel="noopener noreferrer">Morosache</a> | Resources <a style="color: #d7be78" href="https://github.com/davosab/chess" target="_blank" rel="noopener noreferrer">HERE</a>
   </footer>

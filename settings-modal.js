@@ -5,9 +5,14 @@
 
   // Open modal
   settingsButton.addEventListener("click", () => {
+    if(vsBot) {
+      openRobotModal();
+      robotText.textContent = "Game Settings";
+    } else {
     settingsModal.classList.remove("hidden");
     settingsModal.classList.add("flex");
     settingsModal.showModal();
+  }
     clearInterval(intervalId);
   });
 

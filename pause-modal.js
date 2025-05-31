@@ -20,6 +20,7 @@ const closePauseModal = function () {
 pauseButton.addEventListener("click", function () {
   pauseModal.classList.remove("hidden");
   pauseModal.showModal();
+  if(vsBot) drawButton.remove();
   clearInterval(intervalId);
 });
 
@@ -57,9 +58,9 @@ drawButton.addEventListener('click', function() {
   drawModal.classList.remove('hidden');
   drawModal.showModal();
    if(currentTurn === 'w') {
-    drawModalText.innerHTML = player1Input.value + " offered you a draw.<br>Do you accept it?";
+    drawModalText.innerHTML = p1Name.innerHTML + " offered you a draw.<br>Do you accept it?";
    } else {
-    drawModalText.innerHTML = player2Input.value + " offered you a draw.<br>Do you accept it?";
+    drawModalText.innerHTML = p1Name.innerHTML + " offered you a draw.<br>Do you accept it?";
    }
 })
 
