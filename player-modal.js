@@ -37,4 +37,3 @@ playerStart.addEventListener("click", function() {
     timeDisplayBlack.textContent = formatTime(blackTime);
     startTimer();
 });
-

@@ -69,7 +69,17 @@ resignButton.addEventListener('click', function() {
   closePauseModal();
   resignModal.classList.remove("hidden");
   resignModal.showModal();
-})
+});
+
+// When pressed ESC no dialog will go up
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'Escape') {
+    const openModals = document.querySelectorAll('dialog[open]');
+    if (openModals.length > 0) {
+      event.preventDefault(); // Blochează închiderea oricărui modal deschis
+    }
+  }
+});
 
 
 
