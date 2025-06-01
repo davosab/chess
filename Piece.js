@@ -135,15 +135,15 @@ class Piece {
     }
 
     if (this.gaveCheckmate()) {
-        winnerModal.classList.remove('hidden');
-        winnerModal.showModal();
-        vsBot = false;
-    if(currentTurn !== 'w') {
+      winnerModal.classList.remove('hidden');
+      winnerModal.showModal();
+      vsBot = false;
+      if (currentTurn !== 'w') {
         winnerText.innerHTML = p1Name.innerHTML + " won by Checkmate!<br> Do you want to play again?";
-    } else {
+      } else {
         winnerText.innerHTML = p2Name.innerHTML + " won by Checkmate!<br> Do you want to play again?";
-    }
-    clearInterval(intervalId);
+      }
+      clearInterval(intervalId);
     }
 
   }
