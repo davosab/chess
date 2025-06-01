@@ -66,9 +66,13 @@ const robotMoves = function() {
       }
     }
   }
+
+   if (botMoves.length === 0) return;
+
   const randomMove = Math.floor(Math.random() * botMoves.length);
   const { piece, move } = botMoves[randomMove];
-
-  piece.moveTo(move.row, move.col);
+  setTimeout(() => {
+    piece.moveTo(move.row, move.col);
+  }, 300);
 }
 };
