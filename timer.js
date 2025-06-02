@@ -14,14 +14,16 @@ function updateTimers() {
       whiteTime--;
     } else {
       clearInterval(intervalId);
-      return;
+      openWinnerModal()
+      winnerText.innerHTML = p1Name.innerHTML + "'s time ran out! " + p2Name.innerHTML + " is the winner! <br> Do you want to play again?";
     }
   } else {
     if(blackTime > 0) {
       blackTime--;
     } else {
       clearInterval(intervalId);
-      return;
+      openWinnerModal()
+      winnerText.innerHTML = p2Name.innerHTML + "'s time ran out! " + p1Name.innerHTML + " is the winner! <br> Do you want to play again?";
     }
   }
 

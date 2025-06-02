@@ -1,9 +1,15 @@
 const winnerYesButton = document.querySelector(".winner-yes-button");
 const winnerNoButton = document.querySelector(".winner-no-button");
+
 const closeWinnerModal = function () {
   winnerModal.classList.toggle('hidden');
   winnerModal.close();
 };
+
+const openWinnerModal = function () {
+  winnerModal.classList.remove('hidden');
+  winnerModal.showModal();
+}
 
 // If player presses "Yes", then the starting Game modal pops up
 winnerYesButton.addEventListener('click', function () {
