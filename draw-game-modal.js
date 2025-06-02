@@ -22,5 +22,3 @@ playAgainNoButton.addEventListener("click", function () {
   finishedGameModal.classList.remove("hidden");
   finishedGameModal.showModal();
 });
-
-

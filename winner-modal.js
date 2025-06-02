@@ -2,24 +2,24 @@ const winnerYesButton = document.querySelector(".winner-yes-button");
 const winnerNoButton = document.querySelector(".winner-no-button");
 
 const closeWinnerModal = function () {
-  winnerModal.classList.toggle('hidden');
+  winnerModal.classList.toggle("hidden");
   winnerModal.close();
 };
 
 const openWinnerModal = function () {
-  winnerModal.classList.remove('hidden');
+  winnerModal.classList.remove("hidden");
   winnerModal.showModal();
-}
+};
 
 // If player presses "Yes", then the starting Game modal pops up
-winnerYesButton.addEventListener('click', function () {
+winnerYesButton.addEventListener("click", function () {
   closeWinnerModal();
-  startGameModal.classList.remove('hidden');
+  startGameModal.classList.remove("hidden");
   startGameModal.showModal();
 });
 
 // If player presses "no" then a modal pops up saying thx for playing
-winnerNoButton.addEventListener('click', function () {
+winnerNoButton.addEventListener("click", function () {
   closeWinnerModal();
   finishedGameModal.classList.remove("hidden");
   finishedGameModal.showModal();

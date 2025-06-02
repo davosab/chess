@@ -10,7 +10,7 @@ class Rook extends Piece {
 
   constructor(colour, row, col) {
     super(colour, row, col);
-    this.#icon = (colour == "w") ? "♖" : "♜";
+    this.#icon = colour == "w" ? "♖" : "♜";
   }
 
   get icon() {

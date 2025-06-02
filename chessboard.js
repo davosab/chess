@@ -1,7 +1,6 @@
 let selectedPiece;
 let currentTurn = "w";
 
-
 let colourForWhite = "#ffffff";
 let colourForBlack = "#808080";
 
@@ -124,10 +123,9 @@ function mousePressed() {
   let row = Math.floor(mouseY / s);
   let col = Math.floor(mouseX / s);
 
-// if modals open, cannot move pieces
-  const openDialog = document.querySelector('dialog[open]');
-  if (openDialog) return; 
-
+  // if modals open, cannot move pieces
+  const openDialog = document.querySelector("dialog[open]");
+  if (openDialog) return;
 
   if (row < 0 || row > 7 || col < 0 || col > 7) return;
 

@@ -59,8 +59,8 @@ class Piece {
         }
 
         if (!ignoreOwnKingChecks) {
-          let clonedBoard = b.map(row =>
-            row.map(piece => piece ? piece.clone() : null)
+          let clonedBoard = b.map((row) =>
+            row.map((piece) => (piece ? piece.clone() : null))
           );
 
           let triedSquare = clonedBoard[currentRow][currentCol];
@@ -74,7 +74,6 @@ class Piece {
           this.col = currentCol;
 
           if (this.ownKingChecked(clonedBoard)) {
-
             // restore "this" original position
             this.row = originalRow;
             this.col = originalCol;
@@ -87,7 +86,6 @@ class Piece {
           // restore "this" original position
           this.row = originalRow;
           this.col = originalCol;
-
         }
 
         // if pawn, knight or king don't go more steps in same direction
@@ -109,7 +107,7 @@ class Piece {
 
   moveTo(row, col) {
     let moveIsPossible = this.getPossibleMoves(board).some(
-      move => move.row == row && move.col == col
+      (move) => move.row == row && move.col == col
     );
 
     if (moveIsPossible) {
@@ -135,17 +133,20 @@ class Piece {
     }
 
     if (this.gaveCheckmate()) {
-        winnerModal.classList.remove('hidden');
-        winnerModal.showModal();
-        vsBot = false;
-    if(currentTurn !== 'w') {
-        winnerText.innerHTML = p1Name.innerHTML + " won by Checkmate!<br> Do you want to play again?";
-    } else {
-        winnerText.innerHTML = p2Name.innerHTML + " won by Checkmate!<br> Do you want to play again?";
+      winnerModal.classList.remove("hidden");
+      winnerModal.showModal();
+      vsBot = false;
+      if (currentTurn !== "w") {
+        winnerText.innerHTML =
+          p1Name.innerHTML +
+          " won by Checkmate!<br> Do you want to play again?";
+      } else {
+        winnerText.innerHTML =
+          p2Name.innerHTML +
+          " won by Checkmate!<br> Do you want to play again?";
+      }
+      clearInterval(intervalId);
     }
-    clearInterval(intervalId);
-    }
-
   }
 
   ownKingChecked(b) {
@@ -180,8 +181,8 @@ class Piece {
         }
       }
     }
-    return this.getPossibleMoves(b, { ignoreOwnKingChecks: true }).some(move =>
-      move.row == kingRow && move.col == kingCol
+    return this.getPossibleMoves(b, { ignoreOwnKingChecks: true }).some(
+      (move) => move.row == kingRow && move.col == kingCol
     );
   }
 
@@ -198,6 +199,6 @@ class Piece {
         }
       }
     }
-    return (enemyKing.getPossibleMoves(board).length == 0 && !enemyMoves);
+    return enemyKing.getPossibleMoves(board).length == 0 && !enemyMoves;
   }
 }

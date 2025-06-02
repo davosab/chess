@@ -1,7 +1,7 @@
 const robotCancel = document.querySelector(".robot-cancel-button");
 const robotStart = document.querySelector(".robot-start-button");
-const robotText = document.querySelector('.robot-text')
-const p1RobotNameInput = document.querySelector("[data-robot-p1-name-input]")
+const robotText = document.querySelector(".robot-text");
+const p1RobotNameInput = document.querySelector("[data-robot-p1-name-input]");
 
 let vsBot = false;
 
@@ -17,13 +17,13 @@ const openRobotModal = function () {
 
 // If cancel button is pressed, the robot modal closes and the Default starting game modal pops up
 robotCancel.addEventListener("click", function () {
- if(!vsBot) { 
-  closeRobotModal();
-  openStartModal(); 
-} else {
-  closeRobotModal();
-  startTimer();
-}
+  if (!vsBot) {
+    closeRobotModal();
+    openStartModal();
+  } else {
+    closeRobotModal();
+    startTimer();
+  }
 });
 
 // If the start nw game button is pressed, a new game vs the robot starts
@@ -50,29 +50,28 @@ robotStart.addEventListener("click", function () {
 });
 
 // robot makes random move
-const robotMoves = function() {
-  if(vsBot) {
+const robotMoves = function () {
+  if (vsBot) {
+    const botColour = "b";
+    const botMoves = [];
 
-  const botColour = "b";
-  const botMoves = [];
-
-  for (let row of board) {
-    for (let piece of row) {
-      if (piece && piece.colour === botColour) {
-        const moves = piece.getPossibleMoves(board);
-        for (let move of moves) {
-          botMoves.push({ piece, move });
+    for (let row of board) {
+      for (let piece of row) {
+        if (piece && piece.colour === botColour) {
+          const moves = piece.getPossibleMoves(board);
+          for (let move of moves) {
+            botMoves.push({ piece, move });
+          }
         }
       }
     }
+
+    if (botMoves.length === 0) return;
+
+    const randomMove = Math.floor(Math.random() * botMoves.length);
+    const { piece, move } = botMoves[randomMove];
+    setTimeout(() => {
+      piece.moveTo(move.row, move.col);
+    }, 300);
   }
-
-   if (botMoves.length === 0) return;
-
-  const randomMove = Math.floor(Math.random() * botMoves.length);
-  const { piece, move } = botMoves[randomMove];
-  setTimeout(() => {
-    piece.moveTo(move.row, move.col);
-  }, 300);
-}
 };
